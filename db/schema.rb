@@ -10,9 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_05_124402) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_05_130304) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "chatrooms", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "medicines", force: :cascade do |t|
     t.string "name"
@@ -24,6 +30,31 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_05_124402) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.bigint "chatroom_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "pharmacy_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
+    t.index ["pharmacy_id"], name: "index_messages_on_pharmacy_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.bigint "pharmacy_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "medicine_id", null: false
+    t.boolean "delivery"
+    t.boolean "delivered"
+    t.integer "total_price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["medicine_id"], name: "index_orders_on_medicine_id"
+    t.index ["pharmacy_id"], name: "index_orders_on_pharmacy_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
   create_table "pharmacies", force: :cascade do |t|
     t.string "name"
     t.string "address"
@@ -33,6 +64,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_05_124402) do
     t.time "opening_hours"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "stocks", force: :cascade do |t|
+    t.bigint "pharmacy_id", null: false
+    t.bigint "medicine_id", null: false
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["medicine_id"], name: "index_stocks_on_medicine_id"
+    t.index ["pharmacy_id"], name: "index_stocks_on_pharmacy_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -50,4 +91,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_05_124402) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "messages", "chatrooms"
+  add_foreign_key "messages", "pharmacies"
+  add_foreign_key "messages", "users"
+  add_foreign_key "orders", "medicines"
+  add_foreign_key "orders", "pharmacies"
+  add_foreign_key "orders", "users"
+  add_foreign_key "stocks", "medicines"
+  add_foreign_key "stocks", "pharmacies"
 end
