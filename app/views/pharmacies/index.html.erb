@@ -1,0 +1,16 @@
+<div data-controller="search-drugs">
+  <div class="form">
+    <%= form_with url: pharmacies_path, method: :get, html: {class: "d-flex", data: {search_drugs_target: "form"}} do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Find your drug or look for a pharmacy",
+        data: {search_drugs_target: "input", action: "keyup->search-drugs#autocomplete"}
+      %>
+      <%= submit_tag "Search", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+
+
+  <%= render 'list', medicines: @medicines %>
+</div>
