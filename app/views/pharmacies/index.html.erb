@@ -1,49 +1,16 @@
-<div class="form" data-controller="search-drugs">
-  <%= form_with url: pharmacies_path, method: :get, class: "d-flex" do %>
-    <%= text_field_tag :query,
-      params[:query],
-      class: "form-control",
-      placeholder: "Find your drug or look for a pharmacy",
-      data: {action: "keyup->search-drugs#autocomplete"}
-    %>
-    <%= submit_tag "Search", class: "btn btn-primary" %>
-  <% end %>
+<div data-controller="search-drugs">
+  <div class="form">
+    <%= form_with url: pharmacies_path, method: :get, html: {class: "d-flex", data: {search_drugs_target: "form"}} do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Find your drug or look for a pharmacy",
+        data: {search_drugs_target: "input", action: "keyup->search-drugs#autocomplete"}
+      %>
+      <%= submit_tag "Search", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+
+
+  <%= render 'list', medicines: @medicines %>
 </div>
-
-
-
-<% if params[:query].present? %>
-  <%= "Pharmacies where #{params[:query]} is available" %>
-  <% @medicines.each do |medicine| %>
-    <li>
-      <%= medicine.name %>
-      <p><%= "Price: #{medicine.price}" %></p>
-      <% if medicine.prescription == true %>
-        <p><%= "Prescription needed" %></p>
-      <% else %>
-        <p><%= "No prescription needed" %></p>
-      <% end %>
-      <%# <%= medicine.stocks %>
-    </li>
-  <% end %>
-
-  <%= "-------------------------------------" %>
-
-  <% @pharmacies.each do |pharmacy| %>
-    <li><%= pharmacy %></li>
-    <li><%= pharmacy.name %></li>
-  <% end %>
-
-  <%= "-------------------------------------" %>
-
-
-
-  <% @stocks.each do |stock| %>
-    <li><%= stock %></li>
-    <li><%= stock.pharmacy %></li>
-    <li><%= link_to stock.pharmacy.name, pharmacy_path(stock.pharmacy) %></li>
-  <% end %>
-
-<% else %>
-  <p><%= "No results" %></p>
-<% end %>

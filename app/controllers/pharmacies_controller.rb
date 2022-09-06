@@ -6,8 +6,14 @@ class PharmaciesController < ApplicationController
       # raise
       @pharmacies = Pharmacy.all
 
-      @stocks = Stock.where(medicine_id: @medicines[0].id)
+      if @medicines[0].present?
+        @stocks = Stock.where(medicine_id: @medicines[0].id)
+      end
       # raise
+    end
+    respond_to do |format|
+      format.html # Follow regular flow of Rails
+      format.text { render partial: "pharmacies/list", locals: {medicines: @medicines}, formats: [:html] }
     end
   end
 
