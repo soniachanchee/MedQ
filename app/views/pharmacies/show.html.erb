@@ -1,2 +1,65 @@
 <h1><%= @pharmacy.name %></h1>
 <p><%= "Address: #{@pharmacy.address}" %></p>
+
+
+
+
+<div data-controller="add-button">
+  <p><%= @medicine[0].name %></p>
+  <p><%= @medicine[0].price %> MRU</p>
+  <div class="select-quantity">
+    <p data-action="click->add-button#add_quantity" class="btn btn-light">➕</p>
+
+    <p data-add-button-target="quantity">0</p>
+    <p data-action="click->add-button#remove_quantity" class="btn btn-light">➖</p>
+  </div>
+</div>
+
+<%# <% raise %>
+<%= "-------------------------------------" %>
+
+
+<div class="form">
+    <%= form_with url: pharmacies_path, method: :get, html: {class: "d-flex", data: {search_drugs_target: "form"}} do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Browse pharmacy",
+        data: {search_drugs_target: "input", action: "keyup->search-drugs#autocomplete"}
+      %>
+      <%= submit_tag "Search", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+
+
+
+
+
+
+
+
+<% @stocks.each do |stock| %>
+  <% unless @medicine[0].name == stock.medicine.name %>
+    <div data-controller="add-button">
+      <p><%= stock.medicine.name %></p>
+      <p><%= stock.medicine.price %> MRU</p>
+      <div class="select-quantity">
+        <p data-action="click->add-button#add_quantity" class="btn btn-light">➕</p>
+
+        <p data-add-button-target="quantity">0</p>
+        <p data-action="click->add-button#remove_quantity" class="btn btn-light">➖</p>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
+
+<%= link_to 'Back', pharmacies_path(query: @query) %>
+
+
+<% @stocks.each do |stock| %>
+  <% if stock.medicine.name == @medicine[0].name %>
+    <%# <% quantity = stock.quantity %>
+    <%= stock.quantity %>
+  <% end %>
+<% end %>
