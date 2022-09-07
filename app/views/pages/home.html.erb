@@ -1,2 +1,8 @@
 <h1>MedQ</h1>
 <p>Medicine at your doorstep</p>
+
+<% @medicines.each do |medicine| %>
+  <% if medicine.photo.attached? %>
+    <%= cl_image_tag medicine.photo.key, height: 300, width: 400, crop: :fill %>
+  <% end %>
+<% end %>
