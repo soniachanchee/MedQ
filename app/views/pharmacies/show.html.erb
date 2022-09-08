@@ -3,8 +3,6 @@
 
 
 
-
-<%# <div data-controller="add-button"> %>
 <div class="card">
   <% if @medicine[0].nil? %>
     <p><%= @medicine.name %></p>
@@ -32,15 +30,7 @@
     <% end %>
   <% end %>
 </div>
-  <%# <div class="select-quantity">
-    <p data-action="click->add-button#add_quantity" class="btn btn-light">➕</p>
 
-    <p data-add-button-target="quantity">0</p>
-    <p data-action="click->add-button#remove_quantity" class="btn btn-light">➖</p>
-  </div> %>
-<%# </div> %>
-
-<%# <% raise %>
 <%= "-------------------------------------" %>
 
 
