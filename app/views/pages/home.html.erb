@@ -1,23 +1,27 @@
-<h1>MedQ</h1>
-<p>Medicine at your doorstep</p>
-
-<div data-controller="search-drugs">
-  <div class="form">
-    <%= form_with url: pharmacies_path, method: :get, html: {data: {search_drugs_target: "form"}} do %>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-        placeholder: "Find your drug or look for a pharmacy",
-        data: {search_drugs_target: "input", action: "keyup->search-drugs#autocomplete"}
-      %>
-      <div class="d-grid gap-2 mt-3">
-        <%= submit_tag "Search", class: "btn btn-success" %>
-      </div>
-    <% end %>
+<div class="align-items-center" id="home-img">
+  <div id="home-title">
+    <h1>MedQ</h1>
+    <p>Pharmacy in your pocket</p>
   </div>
+</div>
 
-
+<div class="container-fluid mt-5">
+  <div data-controller="search-drugs">
+    <div class="form">
+      <%= form_with url: pharmacies_path, method: :get, html: {data: {search_drugs_target: "form"}} do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Find your drug or look for a pharmacy",
+          data: {search_drugs_target: "input", action: "keyup->search-drugs#autocomplete"}
+        %>
+        <div class="d-grid gap-2 mt-3">
+          <%= submit_tag "Search", class: "btn btn-success" %>
+        </div>
+      <% end %>
+    </div>
   <%# <%= render 'pharmacies/list', medicines: @medicines %>
+  </div>
 </div>
 
 <div class="container-fluid py-2 mt-5">
