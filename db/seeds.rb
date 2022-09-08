@@ -17,7 +17,6 @@ Chatroom.destroy_all
 
 Pharmacy.destroy_all
 
-
 pharmacy1 = Pharmacy.new(name: "Forme", address: "Moka")
 pharmacy1.save
 
@@ -27,98 +26,90 @@ pharmacy2.save
 pharmacy3 = Pharmacy.new(name: "Pharma3", address: "St Pierre")
 pharmacy3.save
 
-
 # medicine = Medicine.new(name: "medicine", prescription: false, price: 100)
 # medicine.save
 
+# doliprane1000 = Medicine.new(name: "doliprane 1000mg", prescription: false, price: 250)
+# doliprane1000.save
+# p doliprane
 
-#doliprane1000 = Medicine.new(name: "doliprane 1000mg", prescription: false, price: 250)
-#doliprane1000.save
-#p doliprane
+# spasfon = Medicine.new(name: "spasfon", prescription: false, price: 300)
+# spasfon.save
 
+# stock1_pharma1 = Stock.new(pharmacy_id: pharmacy1.id, medicine_id: doliprane.id, quantity: 4)
+# stock1_pharma1.save
 
+# stock2_pharma1 = Stock.new(pharmacy_id: pharmacy1.id, medicine_id: doliprane1000.id, quantity: 4)
+# stock2_pharma1.save
 
+# stock3_pharma1 = Stock.new(pharmacy_id: pharmacy1.id, medicine_id: spasfon.id, quantity: 9)
+# stock3_pharma1.save
 
-#spasfon = Medicine.new(name: "spasfon", prescription: false, price: 300)
-#spasfon.save
-
-#stock1_pharma1 = Stock.new(pharmacy_id: pharmacy1.id, medicine_id: doliprane.id, quantity: 4)
-#stock1_pharma1.save
-
-#stock2_pharma1 = Stock.new(pharmacy_id: pharmacy1.id, medicine_id: doliprane1000.id, quantity: 4)
-#stock2_pharma1.save
-
-#stock3_pharma1 = Stock.new(pharmacy_id: pharmacy1.id, medicine_id: spasfon.id, quantity: 9)
-#stock3_pharma1.save
-
-#stock1_pharma2 = Stock.new(pharmacy_id: pharmacy2.id, medicine_id: doliprane.id, quantity: 4)
-#stock1_pharma2.save
-
-
-
+# stock1_pharma2 = Stock.new(pharmacy_id: pharmacy2.id, medicine_id: doliprane.id, quantity: 4)
+# stock1_pharma2.save
 
 # p pharmacy1.stock
 
 # medicine
 file = URI.open("https://res.cloudinary.com/dfrukqags/image/upload/v1662544227/MEDECINE/mustela_sunscreen_giuhlc.jpg")
-medicine = Medicine.new(name: "mustela", price: 599)
-medicine.photo.attach(io: file, filename: "#{medicine.name}.png", content_type: "image/png")
-medicine.save
-puts medicine.name
+medicine1 = Medicine.new(name: "mustela", price: 599)
+medicine1.photo.attach(io: file, filename: "#{medicine.name}.png", content_type: "image/png")
+medicine1.save
+puts medicine1.name
 
 file = URI.open("https://res.cloudinary.com/dfrukqags/image/upload/v1662544285/MEDECINE/voltaren_gel_pqtaaf.jpg")
-medicine = Medicine.new(name: "voltaren gel", price: 120)
-medicine.photo.attach(io: file, filename: "#{medicine.name}.png", content_type: "image/png")
-medicine.save
-puts medicine.name
+medicine2 = Medicine.new(name: "voltaren gel", price: 120)
+medicine2.photo.attach(io: file, filename: "#{medicine.name}.png", content_type: "image/png")
+medicine2.save
+puts medicine2.name
 
 file = URI.open("https://res.cloudinary.com/dfrukqags/image/upload/v1662544285/MEDECINE/ketoplus_gkb3jo.jpg")
-medicine = Medicine.new(name: "ketoplus", price: 200)
-medicine.photo.attach(io: file, filename: "#{medicine.name}.png", content_type: "image/png")
-medicine.save
-puts medicine.name
+medicine3 = Medicine.new(name: "ketoplus", price: 200)
+medicine3.photo.attach(io: file, filename: "#{medicine.name}.png", content_type: "image/png")
+medicine3.save
+puts medicine3.name
 
 file = URI.open("https://res.cloudinary.com/dfrukqags/image/upload/v1662544229/MEDECINE/alvityl_sommeil_socw0n.png")
-medicine = Medicine.new(name: "alvityl sommeil", price: 600)
-medicine.photo.attach(io: file, filename: "#{medicine.name}.png", content_type: "image/png")
-medicine.save
-puts medicine.name
+medicine4 = Medicine.new(name: "alvityl sommeil", price: 600)
+medicine4.photo.attach(io: file, filename: "#{medicine.name}.png", content_type: "image/png")
+medicine4.save
+puts medicine4.name
 
 file = URI.open("https://res.cloudinary.com/dfrukqags/image/upload/v1662544229/MEDECINE/duphalac-syrup-850x850_l6gxyo.jpg")
-medicine = Medicine.new(name: "duphalac", price: 118)
-medicine.photo.attach(io: file, filename: "#{medicine.name}.png", content_type: "image/png")
-medicine.save
-puts medicine.name
+medicine5 = Medicine.new(name: "duphalac", price: 118)
+medicine5.photo.attach(io: file, filename: "#{medicine.name}.png", content_type: "image/png")
+medicine5.save
+puts medicine5.name
 
 file = URI.open("https://res.cloudinary.com/dfrukqags/image/upload/v1662544228/MEDECINE/PANADOL-BABY-INFANSUSPENSION_zniwhi.jpg")
-medicine = Medicine.new(name: "panadol baby suspension", price: 130)
-medicine.photo.attach(io: file, filename: "#{medicine.name}.png", content_type: "image/png")
-medicine.save
-puts medicine.name
+medicine6 = Medicine.new(name: "panadol baby suspension", price: 130)
+medicine6.photo.attach(io: file, filename: "#{medicine.name}.png", content_type: "image/png")
+medicine6.save
+puts medicine6.name
 
 file = URI.open("https://res.cloudinary.com/dfrukqags/image/upload/v1662544228/MEDECINE/sargenor-1-g-5ml-solution-buvable_ugwuto.jpg")
-medicine = Medicine.new(name: "sargenor ampoules", price: 350)
-medicine.photo.attach(io: file, filename: "#{medicine.name}.png", content_type: "image/png")
-medicine.save
-puts medicine.name
+medicine7 = Medicine.new(name: "sargenor ampoules", price: 350)
+medicine7.photo.attach(io: file, filename: "#{medicine.name}.png", content_type: "image/png")
+medicine7.save
+puts medicine7.name
 
 file = URI.open("https://res.cloudinary.com/dfrukqags/image/upload/v1662544228/MEDECINE/brufen_syrup_100ml_rxtygt.jpg")
-medicine = Medicine.new(name: "brufen syrup", price: 140)
-medicine.photo.attach(io: file, filename: "#{medicine.name}.png", content_type: "image/png")
-medicine.save
-puts medicine.name
+medicine8 = Medicine.new(name: "brufen syrup", price: 140)
+medicine8.photo.attach(io: file, filename: "#{medicine.name}.png", content_type: "image/png")
+medicine8.save
+puts medicine8.name
 
 file = URI.open("https://res.cloudinary.com/dfrukqags/image/upload/v1662544228/MEDECINE/sargenor_vit_c_a3i75h.jpg")
-medicine = Medicine.new(name: "sargenor vit c ampoule", price: 400)
-medicine.photo.attach(io: file, filename: "#{medicine.name}.png", content_type: "image/png")
-medicine.save
-puts medicine.name
+medicine9 = Medicine.new(name: "sargenor vit c ampoule", price: 400)
+medicine9.photo.attach(io: file, filename: "#{medicine.name}.png", content_type: "image/png")
+medicine9.save
+puts medicine9.name
 
 file = URI.open("https://res.cloudinary.com/dfrukqags/image/upload/v1662544228/MEDECINE/spasmopep_k0p1yz.jpg")
-medicine = Medicine.new(name: "spasmopep cap", price: 160)
-medicine.photo.attach(io: file, filename: "#{medicine.name}.png", content_type: "image/png")
-medicine.save
-puts medicine.name
+medicine10 = Medicine.new(name: "spasmopep cap", price: 160)
+medicine10.photo.attach(io: file, filename: "#{medicine.name}.png", content_type: "image/png")
+medicine10.save
+puts medicine10.name
 
 stock_of_pharmacy1 = Stock.new(pharmacy_id: pharmacy1.id, medicine_id: medicine.id, quantity: 4)
 stock_of_pharmacy1.save
