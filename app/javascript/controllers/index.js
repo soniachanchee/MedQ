@@ -10,5 +10,8 @@ application.register("chatroom-subscription", ChatroomSubscriptionController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import MapController from "./map_controller"
+application.register("map", MapController)
+
 import SearchDrugsController from "./search_drugs_controller"
 application.register("search-drugs", SearchDrugsController)
