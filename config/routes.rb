@@ -10,8 +10,13 @@ Rails.application.routes.draw do
     resources :messages, only: :create
   end
 
+
   resources :pharmacies do
     resources :orders, only: [:create]
   end
+
+
+  resources :medicines, only: :index
+
 
 end
