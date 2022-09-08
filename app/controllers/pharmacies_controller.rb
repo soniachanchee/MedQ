@@ -29,15 +29,12 @@ class PharmaciesController < ApplicationController
     @order = Order.new
 
     @query = session[:passed_variable]
-    @medicine0 = Medicine.where(name: @query)
-    @medicine = Medicine.find(@medicine0[0].id)
+    @medicines = Medicine.where(name: @query)
+    @medicine = Medicine.find(@medicines[0].id)
     @medicine_stock = @pharmacy.stocks.where(medicine_id: @medicine)
-    # raise
 
-    @stock_med = Stock.where(medicine_id: @medicine)
-    @stock_pharma = @stock_med.where(pharmacy_id: @pharmacy)
-    # @stocks = Stock.where(pharmacy_id: @pharmacy.id)
-
+    # @stock_med = Stock.where(medicine_id: @medicine)
+    # @stock_pharma = @stock_med.where(pharmacy_id: @pharmacy)
 
     if params[:query].present?
       @medicines = Medicine.where(name: params[:query])
