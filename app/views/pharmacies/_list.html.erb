@@ -1,40 +1,39 @@
 <div data-search-drugs-target="list">
-    <% if params[:query].present? %>
-      <% if @medicines[0].present? %>
-        <%= "Pharmacies where #{params[:query]} is available" %>
-        <% @medicines.each do |medicine| %>
-          <li>
-            <%= medicine.name %>
-            <p><%= "Price: #{medicine.price}" %></p>
-            <% if medicine.prescription == true %>
-              <p><%= "Prescription needed" %></p>
-            <% else %>
-              <p><%= "No prescription needed" %></p>
-            <% end %>
-            <%# <%= medicine.stocks %>
-          </li>
-        <% end %>
+  <% if params[:query].present? %>
+    <% if @medicines[0].present? %>
+      <%= "Pharmacies where #{params[:query]} is available" %>
+      <% @medicines.each do |medicine| %>
+        <div class="card">
+          <p><%= medicine.name %></p>
+          <p><%= medicine.price %> MUR</p>
+          <% if medicine.prescription == true %>
+            <p><%= "Prescription needed" %></p>
+          <% else %>
+            <p><%= "No prescription needed" %></p>
+          <% end %>
+        </div>
+      <% end %>
+
+      <p>-------------------------------------</p>
+
+      <% @pharmacies.each do |pharmacy| %>
+        <li><%= pharmacy %></li>
+        <li><%= pharmacy.name %></li>
+      <% end %>
 
         <p>-------------------------------------</p>
 
-        <% @pharmacies.each do |pharmacy| %>
-          <li><%= pharmacy %></li>
-          <li><%= pharmacy.name %></li>
-        <% end %>
-
-        <p>-------------------------------------</p>
 
 
-
-        <% @stocks.each do |stock| %>
-          <li><%= stock %></li>
-          <li><%= stock.pharmacy %></li>
-          <li><%= link_to stock.pharmacy.name, pharmacy_path(stock.pharmacy) %></li>
-        <% end %>
-      <% else %>
-        <p><%= "No results" %></p>
+      <% @stocks.each do |stock| %>
+        <li><%= stock %></li>
+        <li><%= stock.pharmacy %></li>
+        <li><%= link_to stock.pharmacy.name, pharmacy_path(stock.pharmacy) %></li>
       <% end %>
     <% else %>
       <p><%= "No results" %></p>
     <% end %>
-  </div>
+  <% else %>
+    <p><%= "No results" %></p>
+  <% end %>
+</div>

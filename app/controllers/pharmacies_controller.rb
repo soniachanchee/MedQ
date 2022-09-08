@@ -2,10 +2,10 @@ class PharmaciesController < ApplicationController
   def index
     @query = params[:query]
     session[:passed_variable] = @query
+
     if params[:query].present?
       @medicines = Medicine.where(name: params[:query])
       # @medicines.stocks
-      # raise
       @pharmacies = Pharmacy.all
 
       if @medicines[0].present?
@@ -20,21 +20,21 @@ class PharmaciesController < ApplicationController
   end
 
   def show
-    @query = session[:passed_variable]
-    # @test = @query
-    # raise
     @pharmacy = Pharmacy.find(params[:id])
-    @stocks = Stock.where(pharmacy_id: @pharmacy.id)
+    @query = session[:passed_variable]
     @medicine = Medicine.where(name: @query)
-    # @medicines = Medicine.where()
+    @stock_med = Stock.where(medicine_id: @medicine)
+    @stock_pharma = @stock_med.where(pharmacy_id: @pharmacy)
+    # @stocks = Stock.where(pharmacy_id: @pharmacy.id)
+    @order = Order.new
+
+    if params[:query].present?
+      @medicines = Medicine.where(name: params[:query])
+      if @medicines[0].present?
+        @stocks = Stock.where(medicine_id: @medicines[0].id)
+      end
+    else
+      @stocks = Stock.where(pharmacy_id: @pharmacy.id)
+    end
   end
 end
-
-# def first
-#   @first_value = params[:f_name]
-#   session[:passed_variable] = @first_value
-# end
-
-# def second
-#   @first_value = session[:passed_variable]
-#   @get_value = @first_value
