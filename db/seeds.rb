@@ -45,8 +45,11 @@ stock2_pharma1.save
 stock3_pharma1 = Stock.new(pharmacy_id: pharmacy1.id, medicine_id: spasfon.id, quantity: 9)
 stock3_pharma1.save
 
-stock1_pharma2 = Stock.new(pharmacy_id: pharmacy2.id, medicine_id: doliprane.id, quantity: 4)
+stock1_pharma2 = Stock.new(pharmacy_id: pharmacy2.id, medicine_id: doliprane.id, quantity: 2)
 stock1_pharma2.save
+
+stock2_pharma2 = Stock.new(pharmacy_id: pharmacy2.id, medicine_id: spasfon.id, quantity: 3)
+stock2_pharma2.save
 
 
 # p pharmacy1.stock

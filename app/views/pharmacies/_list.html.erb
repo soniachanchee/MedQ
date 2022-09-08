@@ -16,9 +16,13 @@
 
       <p>-------------------------------------</p>
 
-      <% @stocks.each do |stock| %>
-        <li><%= link_to stock.pharmacy.name, pharmacy_path(stock.pharmacy) %></li>
-      <% end %>
+      <div class="pharma-cards">
+        <% @stocks.each do |stock| %>
+        <div class="pharma-card">
+          <h4><%= link_to stock.pharmacy.name, pharmacy_path(stock.pharmacy) %></h4>
+        </div>
+        <% end %>
+      </div>
 
     <% else %>
       <p><%= "No results" %></p>
