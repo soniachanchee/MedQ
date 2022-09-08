@@ -4,8 +4,14 @@ class OrdersController < ApplicationController
     @pharmacy = Pharmacy.find(params[:pharmacy_id])
     @order.pharmacy = @pharmacy
     @order.user = current_user
-    @order.delivered = false
+    @order.delivered = false # Could have done it when generating the model(default value)
+
+
+
     @medicine = Medicine.find(params[:order][:medicine_id])
+    @medicine_stock = @pharmacy.stocks.where(medicine_id: @medicine) #
+    @stocks = @pharmacy.stocks
+
     @available_quantities = @pharmacy.stocks.where(medicine_id: @medicine)
     @a = 0
     @available_quantities.each do |available_qty|
@@ -25,19 +31,6 @@ class OrdersController < ApplicationController
       @order.errors.add(:quantity, "error")
       render "pharmacies/show", status: :unprocessable_entity
     end
-
-    # raise
-    # if @order.save
-    #   @order.total_price = @order.quantity * @order.medicine.price
-    #   # Reduce stock TODO
-    #   @order.save
-    #   # @order.medicine.stock.quantity -= @order.quantity
-    #   redirect_to pharmacy_path(@pharmacy)
-    # else
-    #   flash[:alert] = "Something went wrong"
-    #   render "pharmacies/show", status: :unprocessable_entity
-    # end
-    # raise
   end
 
   private
@@ -46,3 +39,13 @@ class OrdersController < ApplicationController
     params.require(:order).permit(:pharmacy_id, :quantity, :delivery, :medicine_id)
   end
 end
+
+# if @order.save
+#   @order.total_price = @order.quantity * @order.medicine.price
+#   @order.save
+#   @order.medicine.stock.quantity -= @order.quantity
+#   redirect_to pharmacy_path(@pharmacy)
+# else
+#   flash[:alert] = "Something went wrong"
+#   render "pharmacies/show", status: :unprocessable_entity
+# end

@@ -4,30 +4,17 @@
 
 
 <div class="card">
-  <% if @medicine[0].nil? %>
-    <p><%= @medicine.name %></p>
-    <p><%= @medicine.price %> MUR</p>
-    <%= simple_form_for([@pharmacy, @order]) do |f| %>
-    <%= render 'shared/error_messages' %>
-    <%= f.input :quantity %>
-    <%# <%= f.input :delivery %>
-    <%= f.hidden_field :medicine_id, value: @medicine.id %>
-    <%= f.submit value: "Add to cart" %>
-    <% end %>
-  <% else %>
-    <p><%= @medicine[0].name %></p>
-    <p><%= @medicine[0].price %> MUR</p>
-    <% @stock_pharma.each do |stock| %>
-      <%= stock.quantity %>
-      <%= stock.pharmacy.name %>
-    <% end %>
-    <%= simple_form_for([@pharmacy, @order]) do |f| %>
-    <%= render 'shared/error_messages' %>
-    <%= f.input :quantity %>
-    <%# <%= f.input :delivery %>
-    <%= f.hidden_field :medicine_id, value: @medicine[0].id %>
-    <%= f.submit value: "Add to cart" %>
-    <% end %>
+  <p><%= @medicine.name %></p>
+  <p><%= @medicine.price %> MUR</p>
+  <p><%= @medicine_stock[0].quantity %></p>
+
+
+  <%= simple_form_for([@pharmacy, @order]) do |f| %>
+  <%= render 'shared/error_messages' %>
+  <%= f.input :quantity %>
+  <%# <%= f.input :delivery %>
+  <%= f.hidden_field :medicine_id, value: @medicine.id %>
+  <%= f.submit value: "Add to cart" %>
   <% end %>
 </div>
 
@@ -54,39 +41,21 @@
 
 
 <% @stocks.each do |stock| %>
-  <% unless @medicine[0].name == stock.medicine.name %>
-    <div data-controller="add-button">
+  <% unless @medicine.name == stock.medicine.name %>
+    <div class="card">
       <p><%= stock.medicine.name %></p>
       <p><%= stock.medicine.price %> MUR</p>
       <p><%= stock.quantity %></p>
-      <%# <div class="select-quantity">
-        <p data-action="click->add-button#add_quantity" class="btn btn-light">➕</p>
 
-        <p data-add-button-target="quantity">0</p>
-        <p data-action="click->add-button#remove_quantity" class="btn btn-light">➖</p>
-      </div> %>
-    <%# </div> %>
-
-
-
-
-
-    <%= simple_form_for([@pharmacy, @order]) do |f| %>
-    <%= f.input :quantity %>
-    <%= f.input :delivery %>
-    <%= f.hidden_field :medicine_id, value: stock.medicine.id %>
-    <%= f.submit value: "Add to cart" %>
-    <% end %>
+      <%= simple_form_for([@pharmacy, @order]) do |f| %>
+      <%= f.input :quantity %>
+      <%# <%= f.input :delivery %>
+      <%= f.hidden_field :medicine_id, value: stock.medicine.id %>
+      <%= f.submit value: "Add to cart" %>
+      <% end %>
+    </div>
   <% end %>
 <% end %>
 
 
 <%= link_to 'Back', pharmacies_path(query: @query) %>
-
-
-<%# <% @stocks.each do |stock| %>
-  <%# <% if stock.medicine.name == @medicine[0].name %>
-    <%# <% quantity = stock.quantity %>
-    <%# <%= stock.quantity %>
-  <%# <% end %>
-<%# <% end %>
