@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import AddButtonController from "./add_button_controller"
+application.register("add-button", AddButtonController)
+
 import ChatroomSubscriptionController from "./chatroom_subscription_controller"
 application.register("chatroom-subscription", ChatroomSubscriptionController)
 

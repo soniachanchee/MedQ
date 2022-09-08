@@ -1,2 +1,92 @@
 <h1><%= @pharmacy.name %></h1>
 <p><%= "Address: #{@pharmacy.address}" %></p>
+
+
+
+<div class="card">
+  <% if @medicine[0].nil? %>
+    <p><%= @medicine.name %></p>
+    <p><%= @medicine.price %> MUR</p>
+    <%= simple_form_for([@pharmacy, @order]) do |f| %>
+    <%= render 'shared/error_messages' %>
+    <%= f.input :quantity %>
+    <%# <%= f.input :delivery %>
+    <%= f.hidden_field :medicine_id, value: @medicine.id %>
+    <%= f.submit value: "Add to cart" %>
+    <% end %>
+  <% else %>
+    <p><%= @medicine[0].name %></p>
+    <p><%= @medicine[0].price %> MUR</p>
+    <% @stock_pharma.each do |stock| %>
+      <%= stock.quantity %>
+      <%= stock.pharmacy.name %>
+    <% end %>
+    <%= simple_form_for([@pharmacy, @order]) do |f| %>
+    <%= render 'shared/error_messages' %>
+    <%= f.input :quantity %>
+    <%# <%= f.input :delivery %>
+    <%= f.hidden_field :medicine_id, value: @medicine[0].id %>
+    <%= f.submit value: "Add to cart" %>
+    <% end %>
+  <% end %>
+</div>
+
+<%= "-------------------------------------" %>
+
+
+<div class="form">
+  <%= form_with url: pharmacy_path(@pharmacy), method: :get, html: {class: "d-flex", data: {search_drugs_target: "form"}} do %>
+    <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Browse pharmacy",
+        data: {search_drugs_target: "input", action: "keyup->search-drugs#autocomplete"}
+      %>
+      <%= submit_tag "Search", class: "btn btn-primary" %>
+    <% end %>
+</div>
+
+
+
+
+
+
+
+
+<% @stocks.each do |stock| %>
+  <% unless @medicine[0].name == stock.medicine.name %>
+    <div data-controller="add-button">
+      <p><%= stock.medicine.name %></p>
+      <p><%= stock.medicine.price %> MUR</p>
+      <p><%= stock.quantity %></p>
+      <%# <div class="select-quantity">
+        <p data-action="click->add-button#add_quantity" class="btn btn-light">➕</p>
+
+        <p data-add-button-target="quantity">0</p>
+        <p data-action="click->add-button#remove_quantity" class="btn btn-light">➖</p>
+      </div> %>
+    <%# </div> %>
+
+
+
+
+
+    <%= simple_form_for([@pharmacy, @order]) do |f| %>
+    <%= f.input :quantity %>
+    <%= f.input :delivery %>
+    <%= f.hidden_field :medicine_id, value: stock.medicine.id %>
+    <%= f.submit value: "Add to cart" %>
+    <% end %>
+  <% end %>
+<% end %>
+
+
+<%= link_to 'Back', pharmacies_path(query: @query) %>
+
+
+<%# <% @stocks.each do |stock| %>
+  <%# <% if stock.medicine.name == @medicine[0].name %>
+    <%# <% quantity = stock.quantity %>
+    <%# <%= stock.quantity %>
+  <%# <% end %>
+<%# <% end %>

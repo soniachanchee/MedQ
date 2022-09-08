@@ -31,9 +31,28 @@ pharmacy3.save
 # medicine = Medicine.new(name: "medicine", prescription: false, price: 100)
 # medicine.save
 
-# p medicine
 
-# p medicine.name
+#doliprane1000 = Medicine.new(name: "doliprane 1000mg", prescription: false, price: 250)
+#doliprane1000.save
+#p doliprane
+
+
+
+
+#spasfon = Medicine.new(name: "spasfon", prescription: false, price: 300)
+#spasfon.save
+
+#stock1_pharma1 = Stock.new(pharmacy_id: pharmacy1.id, medicine_id: doliprane.id, quantity: 4)
+#stock1_pharma1.save
+
+#stock2_pharma1 = Stock.new(pharmacy_id: pharmacy1.id, medicine_id: doliprane1000.id, quantity: 4)
+#stock2_pharma1.save
+
+#stock3_pharma1 = Stock.new(pharmacy_id: pharmacy1.id, medicine_id: spasfon.id, quantity: 9)
+#stock3_pharma1.save
+
+#stock1_pharma2 = Stock.new(pharmacy_id: pharmacy2.id, medicine_id: doliprane.id, quantity: 4)
+#stock1_pharma2.save
 
 
 
