@@ -27,20 +27,15 @@ pharmacy2.save
 pharmacy3 = Pharmacy.new(name: "Pharma3", address: "St Pierre")
 pharmacy3.save
 
-p pharmacy1
 
-# doliprane = Medicine.new(name: "doliprane", prescription: false, price: 100)
-# doliprane.save
+# medicine = Medicine.new(name: "medicine", prescription: false, price: 100)
+# medicine.save
 
-# p doliprane
+# p medicine
 
-# p doliprane.name
+# p medicine.name
 
-stock_of_pharmacy1 = Stock.new(pharmacy_id: pharmacy1.id, medicine_id: doliprane.id, quantity: 4)
-stock_of_pharmacy1.save
 
-stock_of_pharmacy2 = Stock.new(pharmacy_id: pharmacy2.id, medicine_id: doliprane.id, quantity: 4)
-stock_of_pharmacy2.save
 
 
 # p pharmacy1.stock
@@ -105,3 +100,9 @@ medicine = Medicine.new(name: "spasmopep cap", price: 160)
 medicine.photo.attach(io: file, filename: "#{medicine.name}.png", content_type: "image/png")
 medicine.save
 puts medicine.name
+
+stock_of_pharmacy1 = Stock.new(pharmacy_id: pharmacy1.id, medicine_id: medicine.id, quantity: 4)
+stock_of_pharmacy1.save
+
+stock_of_pharmacy2 = Stock.new(pharmacy_id: pharmacy2.id, medicine_id: medicine.id, quantity: 4)
+stock_of_pharmacy2.save
