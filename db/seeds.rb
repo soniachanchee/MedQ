@@ -114,9 +114,13 @@ medicine10 = Medicine.new(name: "spasmopep cap", price: 160)
 medicine10.photo.attach(io: file, filename: "#{medicine10.name}.png", content_type: "image/png")
 medicine10.save
 puts medicine10.name
-
 # stock_of_pharmacy1 = Stock.new(pharmacy_id: pharmacy1.id, medicine_id: medicine.id, quantity: 4)
 # stock_of_pharmacy1.save
 
 # stock_of_pharmacy2 = Stock.new(pharmacy_id: pharmacy2.id, medicine_id: medicine.id, quantity: 4)
 # stock_of_pharmacy2.save
+chatroom1 = Chatroom.new(name: "naz")
+chatroom1.save
+
+chatroom2 = Chatroom.new(name: "sonia")
+chatroom2.save
