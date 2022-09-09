@@ -113,3 +113,8 @@ stock1_pharma2.save
 
 stock2_pharma2 = Stock.new(pharmacy_id: pharmacy2.id, medicine_id: spasfon.id, quantity: 3)
 stock2_pharma2.save
+chatroom1 = Chatroom.new(name: "naz")
+chatroom1.save
+
+chatroom2 = Chatroom.new(name: "sonia")
+chatroom2.save
