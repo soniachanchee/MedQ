@@ -4,13 +4,14 @@ class PharmaciesController < ApplicationController
     session[:passed_variable] = @query
 
     if params[:query].present?
-      @medicines = Medicine.where(name: params[:query])
+      @medicines = Medicine.where("name ILIKE ?", "#{params[:query]}")
       if @medicines[0].present?
-        @stocks = Stock.where(medicine_id: @medicines[0].id)
+        @stocks = Stock.where("medicine_id = #{@medicines[0].id} AND quantity > 0")
       end
     end
 
-    @pharmacies = Pharmacy.where(name: params[:query])
+    @pharmacies = Pharmacy.all
+    # @pharmacies = Pharmacy.where(name: params[:query])
     @markers = @pharmacies.geocoded.map do |pharmacy|
       {
         lat: pharmacy.latitude,
@@ -29,8 +30,9 @@ class PharmaciesController < ApplicationController
     @order = Order.new
 
     @query = session[:passed_variable]
-    @medicines = Medicine.where(name: @query)
+    @medicines = Medicine.where("name ILIKE ?", "#{@query}")
     @medicine = Medicine.find(@medicines[0].id)
+    # raise
     @medicine_stock = @pharmacy.stocks.where(medicine_id: @medicine)
 
     # @stock_med = Stock.where(medicine_id: @medicine)
