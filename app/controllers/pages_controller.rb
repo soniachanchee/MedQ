@@ -4,4 +4,8 @@ class PagesController < ApplicationController
   def home
     @medicines = Medicine.all
   end
+
+  def checkout
+
+  end
 end
