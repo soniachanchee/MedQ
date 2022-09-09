@@ -1,10 +1,7 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+
 require "open-uri"
 
 Stock.destroy_all
@@ -17,6 +14,7 @@ Chatroom.destroy_all
 
 Pharmacy.destroy_all
 
+# pharmacy
 pharmacy1 = Pharmacy.new(name: "Forme", address: "Moka")
 pharmacy1.save
 
@@ -25,34 +23,6 @@ pharmacy2.save
 
 pharmacy3 = Pharmacy.new(name: "Pharma3", address: "St Pierre")
 pharmacy3.save
-
-doliprane = Medicine.new(name: "doliprane", prescription: false, price: 100)
-doliprane.save
-
-doliprane1000 = Medicine.new(name: "doliprane 1000mg", prescription: false, price: 250)
-doliprane1000.save
-p doliprane
-
-spasfon = Medicine.new(name: "spasfon", prescription: false, price: 300)
-spasfon.save
-
-stock1_pharma1 = Stock.new(pharmacy_id: pharmacy1.id, medicine_id: doliprane.id, quantity: 4)
-stock1_pharma1.save
-
-stock2_pharma1 = Stock.new(pharmacy_id: pharmacy1.id, medicine_id: doliprane1000.id, quantity: 4)
-stock2_pharma1.save
-
-stock3_pharma1 = Stock.new(pharmacy_id: pharmacy1.id, medicine_id: spasfon.id, quantity: 9)
-stock3_pharma1.save
-
-stock1_pharma2 = Stock.new(pharmacy_id: pharmacy2.id, medicine_id: doliprane.id, quantity: 2)
-stock1_pharma2.save
-
-stock2_pharma2 = Stock.new(pharmacy_id: pharmacy2.id, medicine_id: spasfon.id, quantity: 3)
-stock2_pharma2.save
-
-
-# p pharmacy1.stock
 
 # medicine
 file = URI.open("https://res.cloudinary.com/dfrukqags/image/upload/v1662544227/MEDECINE/mustela_sunscreen_giuhlc.jpg")
@@ -114,11 +84,35 @@ medicine10 = Medicine.new(name: "spasmopep cap", price: 160)
 medicine10.photo.attach(io: file, filename: "#{medicine10.name}.png", content_type: "image/png")
 medicine10.save
 puts medicine10.name
-# stock_of_pharmacy1 = Stock.new(pharmacy_id: pharmacy1.id, medicine_id: medicine.id, quantity: 4)
-# stock_of_pharmacy1.save
 
-# stock_of_pharmacy2 = Stock.new(pharmacy_id: pharmacy2.id, medicine_id: medicine.id, quantity: 4)
-# stock_of_pharmacy2.save
+file = URI.open("https://res.cloudinary.com/dfrukqags/image/upload/v1662544229/MEDECINE/alvityl_sommeil_socw0n.png")
+doliprane = Medicine.new(name: "DOLIPRANE", prescription: false, price: 100)
+doliprane.photo.attach(io: file, filename: "#{medicine4.name}.png", content_type: "image/png")
+doliprane.save
+
+doliprane1000 = Medicine.new(name: "DOLIPRANE 1000mg", prescription: false, price: 250)
+doliprane1000.save
+
+file = URI.open("https://res.cloudinary.com/dfrukqags/image/upload/v1662544228/MEDECINE/spasmopep_k0p1yz.jpg")
+spasfon = Medicine.new(name: "SPASFON", prescription: false, price: 300)
+spasfon.photo.attach(io: file, filename: "#{medicine10.name}.png", content_type: "image/png")
+spasfon.save
+
+# stock
+stock1_pharma1 = Stock.new(pharmacy_id: pharmacy1.id, medicine_id: doliprane.id, quantity: 0)
+stock1_pharma1.save
+
+stock2_pharma1 = Stock.new(pharmacy_id: pharmacy1.id, medicine_id: doliprane1000.id, quantity: 4)
+stock2_pharma1.save
+
+stock3_pharma1 = Stock.new(pharmacy_id: pharmacy1.id, medicine_id: spasfon.id, quantity: 9)
+stock3_pharma1.save
+
+stock1_pharma2 = Stock.new(pharmacy_id: pharmacy2.id, medicine_id: doliprane.id, quantity: 2)
+stock1_pharma2.save
+
+stock2_pharma2 = Stock.new(pharmacy_id: pharmacy2.id, medicine_id: spasfon.id, quantity: 3)
+stock2_pharma2.save
 chatroom1 = Chatroom.new(name: "naz")
 chatroom1.save
 
