@@ -10,7 +10,8 @@ class PharmaciesController < ApplicationController
       end
     end
 
-    @pharmacies = Pharmacy.where(name: params[:query])
+    # @pharmacies = Pharmacy.where(name: params[:query])
+    @pharmacies = Pharmacy.all
     @markers = @pharmacies.geocoded.map do |pharmacy|
       {
         lat: pharmacy.latitude,

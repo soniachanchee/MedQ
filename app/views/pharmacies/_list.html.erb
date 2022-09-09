@@ -16,11 +16,23 @@
 
       <p>-------------------------------------</p>
 
-      <div class="pharma-cards">
+      <div class="container-fluid pharma-cards">
         <% @stocks.each do |stock| %>
-        <div class="pharma-card">
-          <h4><%= link_to stock.pharmacy.name, pharmacy_path(stock.pharmacy) %></h4>
-        </div>
+          <%= link_to pharmacy_path(stock.pharmacy) do %>
+            <div class="card pharma-card mt-3">
+              <div class="pharma-card-info">
+                <h4><%= stock.pharmacy.name %></h4>
+                <p><%= stock.pharmacy.address %></p>
+                <p class="pharma-card-hours"><i class="fa-regular fa-clock"></i> 8h - 20h
+                <%# <%= stock.pharmacy.opening_hours %>
+                </p>
+              </div>
+              <div class="pharma-card-photo">
+                <%= image_tag "https://images.unsplash.com/photo-1622230208995-0f26eba75875?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80", style: "width:150px;" %>
+              </div>
+
+            </div>
+          <% end %>
         <% end %>
       </div>
 
