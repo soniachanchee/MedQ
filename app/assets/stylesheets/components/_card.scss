@@ -1,3 +1,12 @@
 .card {
-  width: 170px;
+  padding: 9px;
+  margin-bottom: 5px;
+  // display: flex;
+  // justify-content: space-between;
+}
+
+.card-info {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 5px;
 }
