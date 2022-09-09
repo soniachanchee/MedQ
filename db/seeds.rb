@@ -90,7 +90,9 @@ doliprane = Medicine.new(name: "DOLIPRANE", prescription: false, price: 100)
 doliprane.photo.attach(io: file, filename: "#{medicine4.name}.png", content_type: "image/png")
 doliprane.save
 
+file = URI.open("https://res.cloudinary.com/dfrukqags/image/upload/v1662544228/MEDECINE/PANADOL-BABY-INFANSUSPENSION_zniwhi.jpg")
 doliprane1000 = Medicine.new(name: "DOLIPRANE 1000mg", prescription: false, price: 250)
+doliprane1000.photo.attach(io: file, filename: "#{medicine6.name}.png", content_type: "image/png")
 doliprane1000.save
 
 file = URI.open("https://res.cloudinary.com/dfrukqags/image/upload/v1662544228/MEDECINE/spasmopep_k0p1yz.jpg")
