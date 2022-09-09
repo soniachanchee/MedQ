@@ -1,11 +1,12 @@
 <div data-search-drugs-target="list">
   <% if params[:query].present? %>
     <% if @medicines[0].present? %>
+    <div class="container-fluid">
       <h2><%= "Pharmacies where #{params[:query]} is available" %></h2>
       <% @medicines.each do |medicine| %>
-        <div class="card">
-          <p><%= medicine.name %></p>
-          <p><%= medicine.price %> MUR</p>
+        <div class="card med-card">
+          <h3><%= medicine.name %></h3>
+          <p>Rs <%= number_with_delimiter(medicine.price, :delimiter => ',') %></p>
           <% if medicine.prescription == true %>
             <p><%= "Prescription needed" %></p>
           <% else %>
@@ -13,8 +14,8 @@
           <% end %>
         </div>
       <% end %>
-
-      <p>-------------------------------------</p>
+    </div>
+      <hr>
 
       <div class="container-fluid pharma-cards">
         <% @stocks.each do |stock| %>
