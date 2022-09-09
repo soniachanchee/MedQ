@@ -4,7 +4,7 @@
     <div class="container-fluid">
       <h2><%= "Pharmacies where #{params[:query]} is available" %></h2>
       <% @medicines.each do |medicine| %>
-        <div class="card med-card">
+        <div class="card search-card">
           <h3><%= medicine.name %></h3>
           <p>Rs <%= number_with_delimiter(medicine.price, :delimiter => ',') %></p>
           <% if medicine.prescription == true %>
