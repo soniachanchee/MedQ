@@ -86,17 +86,17 @@ medicine10.save
 puts medicine10.name
 
 file = URI.open("https://res.cloudinary.com/dfrukqags/image/upload/v1662544229/MEDECINE/alvityl_sommeil_socw0n.png")
-doliprane = Medicine.new(name: "ALVITYL SOMMEIL", prescription: false, price: 100)
+doliprane = Medicine.new(name: "DOLIPRANE", prescription: false, price: 100)
 doliprane.photo.attach(io: file, filename: "#{medicine4.name}.png", content_type: "image/png")
 doliprane.save
 
 file = URI.open("https://res.cloudinary.com/dfrukqags/image/upload/v1662544228/MEDECINE/PANADOL-BABY-INFANSUSPENSION_zniwhi.jpg")
-doliprane1000 = Medicine.new(name: "PANADOL BABY suspension", prescription: false, price: 250)
+doliprane1000 = Medicine.new(name: "DOLIPRANE 1000mg", prescription: false, price: 250)
 doliprane1000.photo.attach(io: file, filename: "#{medicine6.name}.png", content_type: "image/png")
 doliprane1000.save
 
 file = URI.open("https://res.cloudinary.com/dfrukqags/image/upload/v1662544228/MEDECINE/spasmopep_k0p1yz.jpg")
-spasfon = Medicine.new(name: "SPASMOPEP CAP", prescription: false, price: 300)
+spasfon = Medicine.new(name: "SPASFON", prescription: false, price: 300)
 spasfon.photo.attach(io: file, filename: "#{medicine10.name}.png", content_type: "image/png")
 spasfon.save
 
