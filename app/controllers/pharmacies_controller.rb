@@ -39,7 +39,8 @@ class PharmaciesController < ApplicationController
     # @stock_pharma = @stock_med.where(pharmacy_id: @pharmacy)
 
     if params[:query].present?
-      @medicines = Medicine.where(name: params[:query])
+      @medicines = Medicine.where("name ILIKE ?", "#{params[:query]}")
+      # raise
       if @medicines[0].present?
         @stocks = @pharmacy.stocks.where(medicine_id: @medicines[0].id)
       end
