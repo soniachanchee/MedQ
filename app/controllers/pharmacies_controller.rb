@@ -6,7 +6,7 @@ class PharmaciesController < ApplicationController
 
     @pharmacies = []
     if params[:query].present?
-      @medicines = Medicine.where("name ILIKE ?", "#{params[:query]}")
+      @medicines = Medicine.where("name ILIKE ?", "%#{params[:query]}%")
       if @medicines[0].present?
         @stocks = Stock.where("medicine_id = #{@medicines[0].id} AND quantity > 0")
         @stocks.each do |stock|
@@ -36,7 +36,7 @@ class PharmaciesController < ApplicationController
     @order = Order.new
 
     @query = session[:passed_variable]
-    @medicines = Medicine.where("name ILIKE ?", "#{@query}")
+    @medicines = Medicine.where("name ILIKE ?", "%#{@query}%")
     @medicine = Medicine.find(@medicines[0].id)
     # raise
     @medicine_stock = @pharmacy.stocks.where(medicine_id: @medicine)
@@ -45,7 +45,7 @@ class PharmaciesController < ApplicationController
     # @stock_pharma = @stock_med.where(pharmacy_id: @pharmacy)
 
     if params[:query].present?
-      @medicines = Medicine.where("name ILIKE ?", "#{params[:query]}")
+      @medicines = Medicine.where("name ILIKE ?", "%#{params[:query]}%")
       # raise
       if @medicines[0].present?
         @stocks = @pharmacy.stocks.where(medicine_id: @medicines[0].id)
