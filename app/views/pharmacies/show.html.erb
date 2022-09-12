@@ -9,7 +9,7 @@
     <div class="card-info-top">
       <p><%= @medicine.name %></p>
       <p><%= @medicine.price %> MUR</p>
-      <p><%= @medicine_stock[0].quantity %></p>
+      <p>In stock: <%= @medicine_stock[0].quantity %></p>
     </div>
     <div class="card-info-btm">
       <%= simple_form_for([@pharmacy, @order]) do |f| %>
@@ -24,6 +24,8 @@
 </div>
 
 <%= "-------------------------------------" %>
+
+<h2>Also available in <%= @pharmacy.name %></h2>
 
 
 <div class="form">
@@ -51,7 +53,11 @@
         <%= cl_image_tag stock.medicine.photo.key %>
         <p><%= stock.medicine.name %></p>
         <p><%= stock.medicine.price %> MUR</p>
-        <p><%= stock.quantity %></p>
+        <% if stock.quantity == 0 %>
+          <%= "Out of stock" %>
+        <% else %>
+          <p>In stock: <%= stock.quantity %></p>
+        <% end %>
 
         <%= simple_form_for([@pharmacy, @order]) do |f| %>
         <%= f.input :quantity, collection: 1..stock.quantity %>

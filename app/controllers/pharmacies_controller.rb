@@ -1,4 +1,5 @@
 class PharmaciesController < ApplicationController
+  skip_before_action :authenticate_user!
   def index
     @query = params[:query]
     session[:passed_variable] = @query
