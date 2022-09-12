@@ -1,14 +1,18 @@
 <div data-controller="search-drugs">
-  <div class="form">
-    <%= form_with url: pharmacies_path, method: :get, html: {class: "d-flex", data: {search_drugs_target: "form"}} do %>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-        placeholder: "Find your drug or look for a pharmacy",
-        data: {search_drugs_target: "input", action: "keyup->search-drugs#autocomplete"}
-      %>
-      <%= submit_tag "Search", class: "btn btn-primary" %>
-    <% end %>
+  <div class="container-fluid mt-5">
+    <div class="form">
+      <%= form_with url: pharmacies_path, method: :get, html: {data: {search_drugs_target: "form"}} do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Find your drug",
+          data: {search_drugs_target: "input", action: "keyup->search-drugs#autocomplete"}
+        %>
+        <div class="d-grid gap-2 mt-3">
+          <%= submit_tag "Search", class: "btn btn-success" %>
+        </div>
+      <% end %>
+    </div>
   </div>
 
 
