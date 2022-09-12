@@ -12,7 +12,7 @@
         <%= text_field_tag :query,
           params[:query],
           class: "form-control",
-          placeholder: "Find your drug or look for a pharmacy",
+          placeholder: "Find your drug",
           data: {search_drugs_target: "input", action: "keyup->search-drugs#autocomplete"}
         %>
         <div class="d-grid gap-2 mt-3">

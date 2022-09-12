@@ -18,12 +18,20 @@ Pharmacy.destroy_all
 pharmacy1 = Pharmacy.new(name: "Forme", address: "Moka")
 pharmacy1.save
 
-pharmacy2 = Pharmacy.new(name: "Pharma2", address: "Moka")
+pharmacy2 = Pharmacy.new(name: "MedActiv pharmacy", address: "Ebene, Mauritius")
 pharmacy2.save
 
-pharmacy3 = Pharmacy.new(name: "Pharma3", address: "St Pierre")
+pharmacy3 = Pharmacy.new(name: "MedActiv pharmacy", address: "Port Louis, Mauritius")
 pharmacy3.save
 
+pharmacy4 = Pharmacy.new(name: "MedActiv pharmacy", address: "Cascavelle mall, Cascavelle, Mauritius")
+pharmacy4.save
+
+pharmacy5 = Pharmacy.new(name: "MedActiv pharmacy", address: "La City Mall, Trianon, Mauritius")
+pharmacy5.save
+
+pharmacy6 = Pharmacy.new(name: "MedActiv pharmacy", address: "Phoenix Mall, Vacoas-Phoenix, Mauritius")
+pharmacy6.save
 # medicine
 file = URI.open("https://res.cloudinary.com/dfrukqags/image/upload/v1662544227/MEDECINE/mustela_sunscreen_giuhlc.jpg")
 medicine1 = Medicine.new(name: "mustela", price: 599)
@@ -101,20 +109,21 @@ spasfon.photo.attach(io: file, filename: "#{medicine10.name}.png", content_type:
 spasfon.save
 
 # stock
-stock1_pharma1 = Stock.new(pharmacy_id: pharmacy1.id, medicine_id: doliprane.id, quantity: 0)
+stock1_pharma1 = Stock.new(pharmacy_id: pharmacy1.id, medicine_id: medicine2.id, quantity: 0)
 stock1_pharma1.save
 
-stock2_pharma1 = Stock.new(pharmacy_id: pharmacy1.id, medicine_id: doliprane1000.id, quantity: 4)
+stock2_pharma1 = Stock.new(pharmacy_id: pharmacy1.id, medicine_id: medicine9.id, quantity: 4)
 stock2_pharma1.save
 
-stock3_pharma1 = Stock.new(pharmacy_id: pharmacy1.id, medicine_id: spasfon.id, quantity: 9)
+stock3_pharma1 = Stock.new(pharmacy_id: pharmacy1.id, medicine_id: medicine10.id, quantity: 9)
 stock3_pharma1.save
 
-stock1_pharma2 = Stock.new(pharmacy_id: pharmacy2.id, medicine_id: doliprane.id, quantity: 2)
+stock1_pharma2 = Stock.new(pharmacy_id: pharmacy2.id, medicine_id: medicine2.id, quantity: 2)
 stock1_pharma2.save
 
-stock2_pharma2 = Stock.new(pharmacy_id: pharmacy2.id, medicine_id: spasfon.id, quantity: 3)
+stock2_pharma2 = Stock.new(pharmacy_id: pharmacy2.id, medicine_id: medicine10.id, quantity: 3)
 stock2_pharma2.save
+
 chatroom1 = Chatroom.new(name: "naz")
 chatroom1.save
 

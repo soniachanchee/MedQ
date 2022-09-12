@@ -2,7 +2,7 @@
   <% if params[:query].present? %>
     <% if @medicines[0].present? %>
     <div class="container-fluid">
-      <h2><%= "Pharmacies where #{params[:query]} is available" %></h2>
+      <h2><%= "#{@stocks.count} Pharmacies found" %></h2>
       <% @medicines.each do |medicine| %>
         <div class="card search-card">
           <h3><%= medicine.name %></h3>

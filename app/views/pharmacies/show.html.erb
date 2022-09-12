@@ -9,12 +9,13 @@
     <div class="card-info-top">
       <p><%= @medicine.name %></p>
       <p><%= @medicine.price %> MUR</p>
-      <p>In stock: <%= @medicine_stock[0].quantity %></p>
+      <%# <p>In stock: <%= @medicine_stock[0].quantity %></p>
     </div>
     <div class="card-info-btm">
+      <p>IN STOCK: <%= @medicine_stock[0].quantity %></p>
       <%= simple_form_for([@pharmacy, @order]) do |f| %>
       <%= render 'shared/error_messages' %>
-      <%= f.input :quantity, collection: 1..@medicine_stock[0].quantity %>
+      <%= f.input :quantity, label: false, collection: 1..@medicine_stock[0].quantity %>
       <%# <%= f.input :delivery %>
       <%= f.hidden_field :medicine_id, value: @medicine.id %>
       <%= f.submit value: "Add to cart" %>
@@ -60,7 +61,7 @@
         <% end %>
 
         <%= simple_form_for([@pharmacy, @order]) do |f| %>
-        <%= f.input :quantity, collection: 1..stock.quantity %>
+        <%= f.input :quantity, label: false, collection: 1..stock.quantity %>
         <%# <%= f.input :delivery %>
         <%= f.hidden_field :medicine_id, value: stock.medicine.id %>
         <%= f.submit value: "Add to cart" %>
