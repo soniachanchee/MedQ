@@ -17,7 +17,7 @@ class PharmaciesController < ApplicationController
       {
         lat: pharmacy.latitude,
         lng: pharmacy.longitude,
-        # info_window: render_to_string(partial: "info_window", locals: {pharmacy: pharmacy})
+        info_window: render_to_string(partial: "info_window", locals: {pharmacy: pharmacy})
       }
     end
 
