@@ -6,8 +6,10 @@ class PagesController < ApplicationController
   end
 
   def checkout
-    @pharmacy = session[:passed_variable]
     # raise
-    @chatroom = Chatroom.new()
+    @chatroom = Chatroom.where(name: @pharmacy.name)
+    if @chatroom.nil?
+      @chatroom = Chatroom.new(name: @pharmacy.name)
+    end
   end
 end

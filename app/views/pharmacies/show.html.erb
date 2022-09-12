@@ -25,6 +25,8 @@
 
 <%= "-------------------------------------" %>
 
+<h2>Also available in <%= @pharmacy.name %></h2>
+
 
 <div class="form">
   <%= form_with url: pharmacy_path(@pharmacy), method: :get, html: {class: "d-flex", data: {search_drugs_target: "form"}} do %>
