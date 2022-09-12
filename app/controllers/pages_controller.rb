@@ -6,6 +6,8 @@ class PagesController < ApplicationController
   end
 
   def checkout
-
+    @pharmacy = session[:passed_variable]
+    # raise
+    @chatroom = Chatroom.new()
   end
 end
