@@ -9,7 +9,9 @@ class PagesController < ApplicationController
     # raise
     # @chatroom = Chatroom.where(name: @pharmacy.name)
     # if @chatroom.nil?
+
       # @chatroom = Chatroom.new(name: @pharmacy.name)
+
     # end
   end
 end
