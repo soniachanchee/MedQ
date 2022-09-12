@@ -7,9 +7,9 @@ class PagesController < ApplicationController
 
   def checkout
     # raise
-    @chatroom = Chatroom.where(name: @pharmacy.name)
-    if @chatroom.nil?
-      @chatroom = Chatroom.new(name: @pharmacy.name)
-    end
+    # @chatroom = Chatroom.where(name: @pharmacy.name)
+    # if @chatroom.nil?
+      # @chatroom = Chatroom.new(name: @pharmacy.name)
+    # end
   end
 end
