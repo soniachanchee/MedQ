@@ -1,18 +1,22 @@
 <h1>Checkout</h1>
 
-<div class="co-cards">
-  <%# <div class="row"> %>
+<div class="container-fluid">
+  <div class="co-cards">
     <div class="co-card">
       <h3>Upload Rx</h3>
     </div>
 
+    <%= link_to chatroom_path(4) do %>
     <div class="co-card">
+
     <%= link_to "Talk to your pharmacy", chatroom_path(5) %>
+
       <h3>Talk to your pharmacist</h3>
     </div>
-  <%# </div> %>
+    <% end %>
+  </div>
 
-  <%# <div class="row"> %>
+  <div class="co-cards">
     <div class="co-card">
       <h3>Pickup</h3>
     </div>
@@ -20,7 +24,7 @@
     <div class="co-card">
       <h3>Delivery</h3>
     </div>
-  <%# </div> %>
+  </div>
 </div>
 
 <%# <%= render 'upload_rx' %>

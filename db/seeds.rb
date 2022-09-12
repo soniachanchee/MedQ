@@ -15,10 +15,12 @@ Chatroom.destroy_all
 Pharmacy.destroy_all
 
 # pharmacy
-pharmacy1 = Pharmacy.new(name: "Forme", address: "Moka")
+pharmacy1 = Pharmacy.new(name: "Forme", address: "Moka, Mauritius")
 pharmacy1.save
 
+
 pharmacy2 = Pharmacy.new(name: "MedActiv pharmacy", address: "Ebene, Mauritius")
+
 pharmacy2.save
 
 pharmacy3 = Pharmacy.new(name: "MedActiv pharmacy", address: "Port Louis, Mauritius")
