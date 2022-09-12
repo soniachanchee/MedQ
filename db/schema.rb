@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_08_034255) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_12_103648) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -98,6 +98,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_08_034255) do
     t.float "longitude"
   end
 
+  create_table "prescriptions", force: :cascade do |t|
+    t.string "name"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_prescriptions_on_user_id"
+  end
+
   create_table "stocks", force: :cascade do |t|
     t.bigint "pharmacy_id", null: false
     t.bigint "medicine_id", null: false
@@ -131,6 +139,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_08_034255) do
   add_foreign_key "orders", "medicines"
   add_foreign_key "orders", "pharmacies"
   add_foreign_key "orders", "users"
+  add_foreign_key "prescriptions", "users"
   add_foreign_key "stocks", "medicines"
   add_foreign_key "stocks", "pharmacies"
 end

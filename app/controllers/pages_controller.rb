@@ -9,9 +9,19 @@ class PagesController < ApplicationController
     # raise
     # @chatroom = Chatroom.where(name: @pharmacy.name)
     # if @chatroom.nil?
-
       # @chatroom = Chatroom.new(name: @pharmacy.name)
-
     # end
+    @prescription = Prescription.new(user_id: current_user)
   end
+
+  # def create
+  #   @prescription = Prescription.new(prescription_params)
+  #   @prescription.save
+  # end
+
+  # private
+
+  # def prescription_params
+  #   params.require(:prescription).permit(:name, :user_id)
+  # end
 end

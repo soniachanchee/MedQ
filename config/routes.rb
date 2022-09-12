@@ -16,5 +16,7 @@ Rails.application.routes.draw do
 
   resources :medicines, only: :index
 
+  resources :prescriptions, only: [:create]
+
   get 'checkout', to: "pages#checkout", as: :checkout
 end

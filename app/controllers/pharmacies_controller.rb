@@ -4,21 +4,26 @@ class PharmaciesController < ApplicationController
     @query = params[:query]
     session[:passed_variable] = @query
 
+    @pharmacies = []
     if params[:query].present?
       @medicines = Medicine.where("name ILIKE ?", "#{params[:query]}")
       if @medicines[0].present?
         @stocks = Stock.where("medicine_id = #{@medicines[0].id} AND quantity > 0")
+        @stocks.each do |stock|
+          @pharmacies << stock.pharmacy
+        end
       end
+    else
+      @pharmacies = Pharmacy.all
     end
 
-    @pharmacies = Pharmacy.all
-    # @pharmacies = Pharmacy.where(name: params[:query])
-    @markers = @pharmacies.geocoded.map do |pharmacy|
+    @markers = @pharmacies.map do |pharmacy|
       {
         lat: pharmacy.latitude,
         lng: pharmacy.longitude
       }
     end
+    # raise
 
     respond_to do |format|
       format.html # Follow regular flow of Rails

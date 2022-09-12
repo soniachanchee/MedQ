@@ -1,3 +1,5 @@
-<%= simple_form_for do |f| %>
-<%= f.input :photo, as: :file %>
+
+<%= simple_form_for(@prescription) do |f| %>
+  <%= f.input :photo, as: :file %>
+  <%= f.submit %>
 <% end %>
