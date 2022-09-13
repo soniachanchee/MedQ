@@ -12,6 +12,13 @@ class PagesController < ApplicationController
       # @chatroom = Chatroom.new(name: @pharmacy.name)
     # end
     @prescription = Prescription.new(user_id: current_user)
+    # @pharmacy = Pharmacy.find
+    # @order = []
+    @orders = Order.where(user_id: current_user)
+    @order = @orders[0]
+    # raise
+    # @order = Order.where("user_id = #{current_user} AND pharmacy_id =")
+    # raise
   end
 
   # def create
@@ -22,6 +29,7 @@ class PagesController < ApplicationController
   # private
 
   # def prescription_params
-  #   params.require(:prescription).permit(:name, :user_id)
+  #   params.require(:prescription).permit(:user_id, :photo)
+  #   raise
   # end
 end
