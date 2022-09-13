@@ -14,6 +14,7 @@ class PagesController < ApplicationController
     @prescription = Prescription.new(user_id: current_user)
 
     # @order = []
+    @order = Order.last
     @orders = Order.where(user_id: current_user)
     # @order = @orders[0]
 

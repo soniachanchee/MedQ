@@ -29,6 +29,13 @@ class OrdersController < ApplicationController
     end
   end
 
+  def update
+    @order = Order.find(params[:id])
+    @order.update(order_params)
+    redirect_to checkout_path
+    # raise
+  end
+
   private
 
   def order_params
