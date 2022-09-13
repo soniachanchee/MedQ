@@ -10,7 +10,7 @@
       <ul class="navbar-nav me-auto nav-justified flex-row">
         <li class="nav-item">
           <%= link_to "/", class: "navbar-brand" do %>
-            <i class="fa-solid fa-pills"></i>
+            <%= image_tag "logo.png" %>
           <% end %>
         </li>
         <% if user_signed_in? %>
