@@ -23,6 +23,21 @@
 
 <h1>Checkout</h1>
 
+
+
+<input class="input" type="checkbox" id="subscription">
+<label for="subscription">Subscribe</label>
+
+
+<%= simple_form_for(@order) do |f| %>
+  <%= f.radio_button :delivery, 0 %>
+  <%= label :delivery, 'Pickup', value: 1 %>
+  <%= f.radio_button :delivery, 1 %>
+  <%= label :delivery, 'delivery', value: 0 %>
+  <%= f.submit %>
+<% end %>
+
+
 <div class="container-fluid">
   <div class="co-cards">
 
@@ -62,4 +77,13 @@
 
 </div>
 <div class="container mt-5" style="height: 10vh;"></div>
-<%# <%= render 'upload_rx' %>
+
+
+<%# <% total_price = 0 %>
+<%# <% @orders.each do |order| %>
+  <%# <%= order.medicine.name %>
+  <%# <%= order.quantity %>
+  <%# <%= order.medicine.price * order.quantity %>
+  <%# <% total_price += order.medicine.price * order.quantity %>
+<%# <% end %>
+<%# <%= total_price %>
