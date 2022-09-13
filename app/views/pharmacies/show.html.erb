@@ -2,23 +2,19 @@
 <p><%= "Address: #{@pharmacy.address}" %></p>
 
 
-
-<div class="card">
-  <%= cl_image_tag @medicine.photo.key %>
-  <div class="card-info">
-    <div class="card-info-top">
-      <p><%= @medicine.name %></p>
-      <p><%= @medicine.price %> MUR</p>
-      <%# <p>In stock: <%= @medicine_stock[0].quantity %></p>
-    </div>
-    <div class="card-info-btm">
-      <p>IN STOCK: <%= @medicine_stock[0].quantity %></p>
+<div class="med-cards">
+  <div class="card med-card">
+    <%= cl_image_tag @medicine.photo.key, class: "med-card-img" %>
+    <div>
+      <h3><%= @medicine.name %></h3>
+      <p class="med-card-price">Rs <%= number_with_delimiter(@medicine.price, :delimiter => ',') %></p>
+      In stock: <%= @medicine_stock[0].quantity %>
       <%= simple_form_for([@pharmacy, @order]) do |f| %>
       <%= render 'shared/error_messages' %>
       <%= f.input :quantity, label: false, collection: 1..@medicine_stock[0].quantity %>
       <%# <%= f.input :delivery %>
       <%= f.hidden_field :medicine_id, value: @medicine.id %>
-      <%= f.submit value: "Add to cart" %>
+      <%= f.submit value: "Add to cart", class: "btn btn-success" %>
       <% end %>
     </div>
   </div>
@@ -29,15 +25,17 @@
 <h2>Also available in <%= @pharmacy.name %></h2>
 
 
-<div class="form">
-  <%= form_with url: pharmacy_path(@pharmacy), method: :get, html: {class: "d-flex", data: {search_drugs_target: "form"}} do %>
+<div class="form mt-3">
+  <%= form_with url: pharmacy_path(@pharmacy), method: :get, html: {data: {search_drugs_target: "form"}} do %>
     <%= text_field_tag :query,
         params[:query],
         class: "form-control",
         placeholder: "Browse pharmacy",
         data: {search_drugs_target: "input", action: "keyup->search-drugs#autocomplete"}
       %>
-      <%= submit_tag "Search", class: "btn btn-primary" %>
+      <div class="d-grid gap-2 mt-3">
+        <%= submit_tag "Search", class: "btn btn-success" %>
+      </div>
     <% end %>
 </div>
 
@@ -47,29 +45,41 @@
 
 
 
-<div class="med-cards">
+<div class="med-cards mt-3">
   <% @stocks.each do |stock| %>
     <% unless @medicine.name == stock.medicine.name %>
-      <div class="card">
-        <%= cl_image_tag stock.medicine.photo.key %>
-        <p><%= stock.medicine.name %></p>
-        <p><%= stock.medicine.price %> MUR</p>
-        <% if stock.quantity == 0 %>
-          <%= "Out of stock" %>
-        <% else %>
-          <p>In stock: <%= stock.quantity %></p>
-        <% end %>
+      <div class="card med-card">
+        <%= cl_image_tag stock.medicine.photo.key, class: "med-card-img" %>
+        <div>
+          <h3><%= stock.medicine.name %></h3>
+          <p class="med-card-price">Rs <%= number_with_delimiter(stock.medicine.price, :delimiter => ',') %></p>
+          <% if stock.quantity == 0 %>
+            <%= "Out of stock" %>
+          <% else %>
+            In stock: <%= stock.quantity %>
+          <% end %>
 
-        <%= simple_form_for([@pharmacy, @order]) do |f| %>
-        <%= f.input :quantity, label: false, collection: 1..stock.quantity %>
-        <%# <%= f.input :delivery %>
-        <%= f.hidden_field :medicine_id, value: stock.medicine.id %>
-        <%= f.submit value: "Add to cart" %>
-        <% end %>
+          <%= simple_form_for([@pharmacy, @order]) do |f| %>
+          <%= f.input :quantity, label: false, collection: 1..stock.quantity %>
+          <%# <%= f.input :delivery %>
+          <%= f.hidden_field :medicine_id, value: stock.medicine.id %>
+          <%= f.submit value: "Add to cart", class: "btn btn-success" %>
+          <% end %>
+        </div>
       </div>
     <% end %>
   <% end %>
+  <%# <div class="card med-card">
+    test
+  </div>
+  <div class="card med-card">
+    test
+  </div>
+  <div class="card med-card">
+    test
+  </div> %>
 </div>
 
 
-<%= link_to 'Back', pharmacies_path(query: @query) %>
+<%= link_to 'Back', pharmacies_path(query: @query), class: "d-grid gap-2 btn btn-dark mt-4" %>
+<div class="container mt-5" style="height: 10vh;"></div>
