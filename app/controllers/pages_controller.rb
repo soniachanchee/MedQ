@@ -6,12 +6,19 @@ class PagesController < ApplicationController
   end
 
   def checkout
-    # raise
     # @chatroom = Chatroom.where(name: @pharmacy.name)
     # if @chatroom.nil?
-      # @chatroom = Chatroom.new(name: @pharmacy.name)
+    #   @chatroom = Chatroom.new(name: @pharmacy.name)
     # end
+
     @prescription = Prescription.new(user_id: current_user)
+
+    # @order = []
+    @order = Order.last
+    @orders = Order.where(user_id: current_user)
+    # @order = @orders[0]
+
+    # @order = Order.where("user_id = #{current_user} AND pharmacy_id =")
   end
 
   # def create
@@ -22,6 +29,6 @@ class PagesController < ApplicationController
   # private
 
   # def prescription_params
-  #   params.require(:prescription).permit(:name, :user_id)
+  #   params.require(:prescription).permit(:user_id, :photo)
   # end
 end
