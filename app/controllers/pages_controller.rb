@@ -7,10 +7,15 @@ class PagesController < ApplicationController
 
   def checkout
     # raise
+
+    @order = Order.where(user: current_user).last
+    @pharmacy = @order.pharmacy
+    # raise
     # @chatroom = Chatroom.where(name: @pharmacy.name)
     # if @chatroom.nil?
-      # @chatroom = Chatroom.new(name: @pharmacy.name)
+      @chatroom = Chatroom.new(name: @pharmacy.name)
     # end
+    # raise
     @prescription = Prescription.new(user_id: current_user)
   end
 
