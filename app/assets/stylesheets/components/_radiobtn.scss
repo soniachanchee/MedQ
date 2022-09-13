@@ -1,0 +1,16 @@
+.input {
+  position: absolute;
+  transform: scale(0);
+}
+
+.input + label {
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 50px;
+  // background-color: gray;
+}
+
+.input:checked + label {
+  background-color: black;
+  color: white;
+}
