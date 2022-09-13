@@ -26,7 +26,7 @@ class OrdersController < ApplicationController
             render "pharmacies/show", status: :unprocessable_entity
           end
         else
-          redirect_to pharmacy_path(@pharmacy), notice: "You already ordered from #{Order.last.pharmacy.name}"
+          redirect_to pharmacy_path(@pharmacy), notice: "You already ordered from #{Order.last.pharmacy.name}. You must order from the same store."
           # flash[:notice] = "Missing Fields"
         end
       else
