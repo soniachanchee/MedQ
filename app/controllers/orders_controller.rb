@@ -18,28 +18,31 @@ class OrdersController < ApplicationController
       puts "a"
       if @available_qty >= @order.quantity
         puts "b"
-        if Order.last.present? && Order.last.pharmacy == @pharmacy
-          # raise
-          puts "c"
-          if @order.save
-            puts "d"
-            @order.total_price = @order.quantity * @order.medicine.price
-            @order.save
-            # Reduce stock TODO
-            # @order.medicine.stock.quantity -= @order.quantity
-            redirect_to pharmacy_path(@pharmacy)
+        last_order = Order.last
+        if last_order.present?
+          puts "1"
+          if last_order.pharmacy == @pharmacy
+            # raise
+            puts "c"
+            save_order
+            puts "g"
           else
-            render "pharmacies/show", status: :unprocessable_entity
+            puts "h"
+            redirect_to pharmacy_path(@pharmacy), notice: "You already ordered from #{last_order.pharmacy.name}. You must order from the same store."
+            # flash[:notice] = "Missing Fields"
           end
         else
-          redirect_to pharmacy_path(@pharmacy), notice: "You already ordered from #{Order.last.pharmacy.name}. You must order from the same store."
-          # flash[:notice] = "Missing Fields"
+          save_order
         end
+        puts "2"
       else
+        puts "3"
         @order.errors.add(:quantity, "There's not enough stock")
         render "pharmacies/show", status: :unprocessable_entity
       end
+      puts "4"
     else
+      puts "5"
       @order.errors.add(:quantity, "Please add a quantity")
     end
   end
@@ -52,6 +55,20 @@ class OrdersController < ApplicationController
   end
 
   private
+
+  def save_order
+    if @order.save
+      puts "d"
+      @order.total_price = @order.quantity * @order.medicine.price
+      @order.save
+      # Reduce stock TODO
+      # @order.medicine.stock.quantity -= @order.quantity
+      redirect_to pharmacy_path(@pharmacy)
+    else
+      puts "f"
+      render "pharmacies/show", status: :unprocessable_entity
+    end
+  end
 
   def order_params
     params.require(:order).permit(:pharmacy_id, :quantity, :delivery, :medicine_id)
