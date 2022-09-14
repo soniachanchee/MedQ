@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
+    puts "e"
     @pharmacy = Pharmacy.find(params[:pharmacy_id])
     @order.pharmacy = @pharmacy
     @order.user = current_user
@@ -13,19 +14,33 @@ class OrdersController < ApplicationController
     # @available_quantities = @pharmacy.stocks.where(medicine_id: @medicine)
     @available_qty = @medicine_stock[0].quantity
 
-    if @available_qty >= @order.quantity
-      if @order.save
-        @order.total_price = @order.quantity * @order.medicine.price
-        @order.save
-        # Reduce stock TODO
-        # @order.medicine.stock.quantity -= @order.quantity
-        redirect_to pharmacy_path(@pharmacy)
+    if @order.quantity.present?
+      puts "a"
+      if @available_qty >= @order.quantity
+        puts "b"
+        if Order.last.present? && Order.last.pharmacy == @pharmacy
+          # raise
+          puts "c"
+          if @order.save
+            puts "d"
+            @order.total_price = @order.quantity * @order.medicine.price
+            @order.save
+            # Reduce stock TODO
+            # @order.medicine.stock.quantity -= @order.quantity
+            redirect_to pharmacy_path(@pharmacy)
+          else
+            render "pharmacies/show", status: :unprocessable_entity
+          end
+        else
+          redirect_to pharmacy_path(@pharmacy), notice: "You already ordered from #{Order.last.pharmacy.name}. You must order from the same store."
+          # flash[:notice] = "Missing Fields"
+        end
       else
+        @order.errors.add(:quantity, "There's not enough stock")
         render "pharmacies/show", status: :unprocessable_entity
       end
     else
-      @order.errors.add(:quantity, "There's not enough stock")
-      render "pharmacies/show", status: :unprocessable_entity
+      @order.errors.add(:quantity, "Please add a quantity")
     end
   end
 

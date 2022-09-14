@@ -42,3 +42,22 @@
   box-shadow: 0px 5px 10px #555;
   font-weight: 5px;
 }
+
+
+
+
+.co-cardst{
+  display: flex;
+  justify-content: space-between;
+}
+
+.co-cardt {
+  width: 150px;
+  height: 200px;
+  border-radius: 5px;
+  box-shadow: 0px 5px 10px #555;
+  background-color: #5B9363;
+  color: white;
+  justify-content: center;
+  align-items: center;
+}
