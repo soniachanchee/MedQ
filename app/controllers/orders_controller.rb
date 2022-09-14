@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
+    puts "e"
     @pharmacy = Pharmacy.find(params[:pharmacy_id])
     @order.pharmacy = @pharmacy
     @order.user = current_user
@@ -14,9 +15,14 @@ class OrdersController < ApplicationController
     @available_qty = @medicine_stock[0].quantity
 
     if @order.quantity.present?
+      puts "a"
       if @available_qty >= @order.quantity
+        puts "b"
         if Order.last.present? && Order.last.pharmacy == @pharmacy
+          # raise
+          puts "c"
           if @order.save
+            puts "d"
             @order.total_price = @order.quantity * @order.medicine.price
             @order.save
             # Reduce stock TODO

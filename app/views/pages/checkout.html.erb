@@ -91,11 +91,12 @@
 <div class="container mt-5" style="height: 10vh;"></div>
 
 
-<%# <% total_price = 0 %>
-<%# <% @orders.each do |order| %>
-  <%# <%= order.medicine.name %>
-  <%# <%= order.quantity %>
-  <%# <%= order.medicine.price * order.quantity %>
-  <%# <% total_price += order.medicine.price * order.quantity %>
-<%# <% end %>
-<%# <%= total_price %>
+<% total_price = 0 %>
+<% @orders.each do |order| %>
+  <%= order.medicine.name %>
+  <%= order.quantity %>
+  <%= order.medicine.price * order.quantity %>
+  <% total_price += order.medicine.price * order.quantity %>
+<% end %>
+<%= total_price %>
+<br>
