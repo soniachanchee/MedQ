@@ -29,7 +29,6 @@ class OrdersController < ApplicationController
           else
             puts "h"
             redirect_to pharmacy_path(@pharmacy), notice: "You already ordered from #{last_order.pharmacy.name}. You must order from the same store."
-            # flash[:notice] = "Missing Fields"
           end
         else
           save_order
@@ -62,6 +61,9 @@ class OrdersController < ApplicationController
       @order.total_price = @order.quantity * @order.medicine.price
       @order.save
       # Reduce stock TODO
+      test = @medicine_stock[0].quantity - @order.quantity
+      @medicine_stock[0].quantity = test
+      # raise
       # @order.medicine.stock.quantity -= @order.quantity
       redirect_to pharmacy_path(@pharmacy)
     else
