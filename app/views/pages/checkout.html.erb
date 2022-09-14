@@ -58,9 +58,9 @@
   <div class="co-cards">
     <%= simple_form_for(@order) do |f| %>
       <%= f.radio_button :delivery, 0 %>
-      <%= label :delivery, 'Pickup', value: 1, class: "co-card" %>
+      <%= f.label :delivery, 'Pickup', value: 0, class: "co-card" %>
       <%= f.radio_button :delivery, 1 %>
-      <%= label :delivery, 'delivery', value: 0, class: "co-card" %>
+      <%= f.label :delivery, 'Delivery', value: 1, class: "co-card" %>
       <%= f.submit %>
     <% end %>
   </div>
