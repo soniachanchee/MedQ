@@ -2,9 +2,9 @@
   <% if params[:query].present? %>
     <% if @medicines[0].present? %>
     <div class="container-fluid">
-      <h2><%= "#{@stocks.count} Pharmacies found" %></h2>
+      <h2 id="pharma-count"><%= "#{@stocks.count} Pharmacies found" %></h2>
       <% @medicines.each do |medicine| %>
-        <div class="card search-card">
+        <%# <div class="card search-card"> %>
           <h3><%= medicine.name %></h3>
           <p>Rs <%= number_with_delimiter(medicine.price, :delimiter => ',') %></p>
           <% if medicine.prescription == true %>
@@ -12,7 +12,7 @@
           <% else %>
             <p><%= "No prescription needed" %></p>
           <% end %>
-        </div>
+        <%# </div> %>
       <% end %>
     </div>
       <hr>
