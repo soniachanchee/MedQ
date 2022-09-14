@@ -13,11 +13,14 @@ Message.destroy_all
 
 Chatroom.destroy_all
 
-Pharmacy.destroy_all
+Prescription.destroy_all
 
 Order.destroy_all
 
 User.destroy_all
+
+Pharmacy.destroy_all
+
 
 # pharmacy
 pharmacy1 = Pharmacy.new(name: "Forme", address: "Bagatelle, Mauritius")
