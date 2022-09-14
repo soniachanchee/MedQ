@@ -10,6 +10,16 @@
   justify-content: center;
   align-items: center;
 
+  input {
+    visibility:hidden;
+  }
+  label {
+      cursor: pointer;
+  }
+  input:checked + label {
+      background: seagreen;
+  }
+
   .co-card {
     width: 170px;
     height: 200px;

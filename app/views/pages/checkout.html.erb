@@ -43,10 +43,30 @@
   <div class="container-fluid">
     <div class="co-cards">
 
+
+    <div class="co-card">
+      <%= link_to chatroom_path(@chatroom) do %>
+      <i class="fa-solid fa-comment fa-5x"></i>
+      <h3 class="mt-3">Talk to your pharmacist</h3>
+    <% end %>
+    </div>
+  </div>
+
+  <div class="co-cards">
+    <%= simple_form_for(@order) do |f| %>
+      <%= f.radio_button :delivery, 0 %>
+      <%= f.label :delivery, 'Pickup', value: 0, class: "co-card" %>
+      <%= f.radio_button :delivery, 1 %>
+      <%= f.label :delivery, 'Delivery', value: 1, class: "co-card" %>
+      <%= f.submit %>
+    <% end %>
+  </div>
+
       <div class="co-card" data-bs-toggle="modal" data-bs-target="#exampleModal">
         <i class="fa-solid fa-upload fa-5x"></i>
         <h3>Upload Rx</h3>
       </div>
+
 
       <div class="co-card">
         <%= link_to chatroom_path(@chatroom) do %>
