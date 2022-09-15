@@ -1,108 +1,87 @@
 // Specific CSS for your home-page
+.features {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+
+  .card-feature {
+    width: 45%;
+    height: 180px;
+    padding: 0.5em;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    color: rgba(0, 0, 0, 0.55);
+    background: rgb(133,211,144);
+    background: linear-gradient(150deg, rgba(133,211,144,1) 34%, rgba(91,147,99,1) 100%);
+    border-radius: 0.5em;
+
+    .card-feature-text {
+      text-align: center;
+      line-height: 1.2;
+    }
+  }
+}
+
 .scrolling-wrapper {
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
 
   .card {
-    width: 200px;
-    height: 250px;
+    width: 210px;
+    height: 297px;
     display: inline-block;
+    border-radius: 0.5em;
   }
 
   #home-card1 {
-    background:
-    linear-gradient(
-      rgba(0, 0, 0, 0.3),
-      rgba(0, 0, 0, 0.3)
-    ),
-    url("https://images.unsplash.com/photo-1461174106495-31e4ca6ed98a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80") no-repeat center;
+    background: url("https://cdn.who.int/media/images/default-source/campaigns/world-health-day/whd_a3-poster_black-1.tmb-1920v.jpg?sfvrsn=46abbfae_11") no-repeat center;
     background-size: cover;
   }
 
   #home-card2 {
-    background:
-    linear-gradient(
-      rgba(0, 0, 0, 0.3),
-      rgba(0, 0, 0, 0.3)
-      ),
-    url("https://images.unsplash.com/photo-1608243499710-5ebece89a37d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=488&q=80") no-repeat center;
+    background: url("https://images.unsplash.com/photo-1608243499710-5ebece89a37d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=488&q=80") no-repeat center;
     background-size: cover;
   }
 
   #home-card3 {
-    background:
-    linear-gradient(
-      rgba(0, 0, 0, 0.3),
-      rgba(0, 0, 0, 0.3)
-      ),
-    url("https://images.unsplash.com/photo-1544829894-eb023ba95a38?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80") no-repeat center;
+    background: url("https://www.who.int/images/default-source/searo---images/blood-safety/blood-donor-day-20-poster-3.jpg?sfvrsn=9fee81a8_2") no-repeat center;
     background-size: cover;
   }
 
   #home-card4 {
-    background:
-    linear-gradient(
-      rgba(0, 0, 0, 0.3),
-      rgba(0, 0, 0, 0.3)
-      ),
-    url("https://images.unsplash.com/photo-1580281658460-2d1114999983?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80") no-repeat center;
+    background: url("https://images.unsplash.com/photo-1580281658460-2d1114999983?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80") no-repeat center;
     background-size: cover;
   }
 
   #home-card5 {
-    background:
-    linear-gradient(
-      rgba(0, 0, 0, 0.3),
-      rgba(0, 0, 0, 0.3)
-      ),
-    url("https://images.unsplash.com/photo-1579165466949-3180a3d056d5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80") no-repeat center;
+    background: url("https://online.visual-paradigm.com/repository/images/56008d8e-2020-4d4c-a6de-eb0e908cf1be/healthcare-illustration-posters-design/new-medicine-introduction-poster.png") no-repeat center;
     background-size: cover;
   }
 
   #home-card6 {
-    background:
-    linear-gradient(
-      rgba(0, 0, 0, 0.3),
-      rgba(0, 0, 0, 0.3)
-    ),
-    url("https://images.unsplash.com/photo-1512069772995-ec65ed45afd6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=437&q=80") no-repeat center;
+    background: url("https://images.unsplash.com/photo-1512069772995-ec65ed45afd6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=437&q=80") no-repeat center;
     background-size: cover;
   }
 
   #home-card7 {
-    background:
-    linear-gradient(
-      rgba(0, 0, 0, 0.3),
-      rgba(0, 0, 0, 0.3)
-      ),
-    url("https://images.unsplash.com/photo-1584912262782-d828d56a1d9c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTQ5fHxtZWRpY2luZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60") no-repeat center;
+    background: url("https://marketplace.canva.com/EAFJuxoRafs/1/0/1131w/canva-blue-and-green-medical-clinic-poster-design-mFHFT_ro3aY.jpg") no-repeat center;
     background-size: cover;
   }
 }
 
-#home-img {
-  height: 437px;
-  width: 100%;
-
-  // background:
-  // linear-gradient(
-  //   rgba(0, 0, 0, 0.7),
-  //   rgba(0, 0, 0, 0.5)
-  //   ),
-  // url("https://images.unsplash.com/photo-1584912262782-d828d56a1d9c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTQ5fHxtZWRpY2luZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60") no-repeat center;
-  // background-size: cover;
-  // display: flex;
-  // justify-content: center;
-  // align-items: center;
-}
-
 #home-banner {
-
+  height: auto;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   padding-top: 30px;
-  background-color: gainsboro;
+  // background-color: gainsboro;
+  background: rgb(238,238,238);
+  background: linear-gradient(135deg, rgba(238,238,238,1) 0%, rgba(164,164,164,1) 100%);
+  border-radius: 0.5em;
 
   h1 {
     font-size: 90px;

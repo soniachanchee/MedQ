@@ -1,14 +1,31 @@
-<div class="align-items-center" id="home-img">
-  <div id="home-banner">
-    <%= image_tag("banner2.svg", class: "banner-img") %>
-    <div class="banner-info">
-      <h1><span>Med</span>Q</h1>
-      <p>Pharmacy in your pocket</p>
-    </div>
+<div class="align-items-center" id="home-banner">
+  <%= image_tag("banner2.svg", class: "banner-img") %>
+  <div class="banner-info">
+    <h1><span>Med</span>Q</h1>
+    <p>Pharmacy in your pocket</p>
   </div>
 </div>
 
-<div class="container-fluid mt-5">
+<div class="container-fluid features mt-4">
+  <div class="card-feature">
+    <i class="fa-solid fa-upload fa-3x"></i>
+    <p class="card-feature-text mt-1">Search for medicine in your prescription</p>
+  </div>
+  <div class="card-feature">
+    <i class="fa-solid fa-comment fa-3x"></i>
+    <p class="card-feature-text mt-1">Chat with your<br>pharmacist</p>
+  </div>
+  <div class="card-feature mt-3">
+    <i class="fa-solid fa-shop fa-3x"></i>
+    <p class="card-feature-text mt-1">You can pick up<br>your order at<br>the pharmacy ...</p>
+  </div>
+  <div class="card-feature mt-3">
+    <i class="fa-solid fa-car-side fa-3x"></i>
+    <p class="card-feature-text mt-1">... or have it delivered<br>at your place</p>
+  </div>
+</div>
+
+<div class="container-fluid mt-4">
   <div data-controller="search-drugs">
     <div class="form">
       <%= form_with url: pharmacies_path, method: :get, html: {data: {search_drugs_target: "form"}} do %>
@@ -27,29 +44,22 @@
   </div>
 </div>
 
-<div class="container-fluid py-2 mt-5">
+<div class="container-fluid py-2 mt-4">
     <h2 class="font-weight-light">Special Offers</h2>
     <div class="scrolling-wrapper">
         <div class="card card-body" id="home-card1">
-          <p class="card-body-item">Home remedies against sore throat</p>
         </div>
         <div class="card card-body" id="home-card2">
-          <p class="card-body-item">Card</p>
         </div>
         <div class="card card-body" id="home-card3">
-          <p class="card-body-item">Card</p>
         </div>
         <div class="card card-body" id="home-card4">
-          <p class="card-body-item">Card</p>
         </div>
         <div class="card card-body" id="home-card5">
-          <p class="card-body-item">Card</p>
         </div>
         <div class="card card-body" id="home-card6">
-          <p class="card-body-item">Card</p>
         </div>
         <div class="card card-body" id="home-card7">
-          <p class="card-body-item">Card</p>
         </div>
     </div>
 </div>
