@@ -1,3 +1,9 @@
+<div>
+  <%= link_to pharmacies_path(query: @query) do %>
+    <i class="fa-solid fa-arrow-left back"></i>
+  <% end %>
+</div>
+
 <h1><%= @pharmacy.name %></h1>
 <p><%= "Address: #{@pharmacy.address}" %></p>
 
@@ -22,7 +28,7 @@
 
 <hr>
 
-<h2>More products from <%= @pharmacy.name %></h2>
+<h2 id="more">More products from <%= @pharmacy.name %></h2>
 
 
 <div class="form mt-3">
@@ -69,15 +75,6 @@
       </div>
     <% end %>
   <% end %>
-  <%# <div class="card med-card">
-    test
-  </div>
-  <div class="card med-card">
-    test
-  </div>
-  <div class="card med-card">
-    test
-  </div> %>
 </div>
 
 
