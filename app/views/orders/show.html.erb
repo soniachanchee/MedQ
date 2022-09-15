@@ -1,0 +1,21 @@
+<h4>Preview</h4>
+<h6><%= @orders.last.pharmacy.name %></h6>
+<% total_price = 0 %>
+<% @orders.each do |order| %>
+  <%= order.medicine.name %>
+  <%= order.quantity %>
+  <%= order.medicine.price * order.quantity %>
+  <% total_price += order.medicine.price * order.quantity %>
+  <br>
+<% end %>
+<p>Total: Rs <%= total_price %></p>
+<% if @orders.last.delivery == true %>
+  <p>Delivery</p>
+<% else %>
+  <p>Pickup</p>
+<% end %>
+
+
+<div class="d-grid gap-2 mt-4 btn-checkout">
+  <button class="btn btn-success">Pay</button>
+</div>
