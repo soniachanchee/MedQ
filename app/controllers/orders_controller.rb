@@ -1,4 +1,8 @@
 class OrdersController < ApplicationController
+  def show
+    @orders = Order.where(user_id: current_user)
+  end
+
   def create
     @order = Order.new(order_params)
     puts "e"

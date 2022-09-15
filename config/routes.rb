@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   resources :prescriptions, only: [:create]
 
-  resources :orders, only: [:update]
+  resources :orders, only: [:update, :show]
 
   get 'checkout', to: "pages#checkout", as: :checkout
 end
