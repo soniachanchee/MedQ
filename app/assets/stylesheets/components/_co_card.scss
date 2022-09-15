@@ -17,7 +17,7 @@
       cursor: pointer;
   }
   input[type="radio"]:checked + label {
-      background: seagreen;
+      background: #5B9363;
   }
 
   .co-card {
@@ -44,6 +44,10 @@
       text-decoration: none;
       color: white;
     }
+  }
+
+  .co-card-del {
+    background-color: #adc9b1;
   }
 }
 

@@ -53,7 +53,7 @@ class OrdersController < ApplicationController
   def update
     @order = Order.find(params[:id])
     @order.update(order_params)
-    redirect_to checkout_path
+    redirect_to order_path
     # raise
   end
 
