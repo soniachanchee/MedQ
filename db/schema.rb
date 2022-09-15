@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_12_103648) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_15_115457) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -46,6 +46,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_12_103648) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.bigint "pharmacy_id", null: false
+    t.index ["pharmacy_id"], name: "index_chatrooms_on_pharmacy_id"
+    t.index ["user_id"], name: "index_chatrooms_on_user_id"
   end
 
   create_table "medicines", force: :cascade do |t|
@@ -96,6 +100,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_12_103648) do
     t.datetime "updated_at", null: false
     t.float "latitude"
     t.float "longitude"
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_pharmacies_on_user_id"
   end
 
   create_table "prescriptions", force: :cascade do |t|
@@ -127,18 +133,22 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_12_103648) do
     t.string "first_name"
     t.string "last_name"
     t.string "address"
+    t.boolean "admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "chatrooms", "pharmacies"
+  add_foreign_key "chatrooms", "users"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "pharmacies"
   add_foreign_key "messages", "users"
   add_foreign_key "orders", "medicines"
   add_foreign_key "orders", "pharmacies"
   add_foreign_key "orders", "users"
+  add_foreign_key "pharmacies", "users"
   add_foreign_key "prescriptions", "users"
   add_foreign_key "stocks", "medicines"
   add_foreign_key "stocks", "pharmacies"

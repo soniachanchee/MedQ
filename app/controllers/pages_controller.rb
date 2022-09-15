@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :home ]
+  skip_before_action :authenticate_user!, only: [:home]
 
   def home
     @medicines = Medicine.all
@@ -10,11 +10,14 @@ class PagesController < ApplicationController
     if @order.present?
       @pharmacy = @order.pharmacy
 
-      # @chatroom = Chatroom.where(name: @pharmacy.name)
-      # if @chatroom.nil?
+      @chatroom = Chatroom.find_by(name: @pharmacy.name, user_id: current_user.id)
+      # @chatroom = Chatroom.find_by("")
+      if @chatroom.nil?
         @chatroom = Chatroom.new(name: @pharmacy.name)
+        @chatroom.user_id = current_user.id
+        @chatroom.pharmacy_id = @pharmacy.id
         @chatroom.save
-      # end
+      end
 
       @prescription = Prescription.new(user_id: current_user)
 
@@ -25,5 +28,11 @@ class PagesController < ApplicationController
 
       # @order = Order.where("user_id = #{current_user} AND pharmacy_id =")
     end
+  end
+
+  def view_profile
+    @user = current_user
+    @pharmacy = Pharmacy.new
+    @chatroom = Chatroom.where(name: Pharmacy.where(user_id: current_user.id).name)
   end
 end

@@ -55,4 +55,19 @@ class PharmaciesController < ApplicationController
       @stocks = @pharmacy.stocks
     end
   end
+
+  def create
+    @pharmacy.new(pharmacy_params)
+    if @pharmacy.save
+      redirect to profile_path
+    else
+      render 'new', status: :unprocessable_entity
+    end
+  end
+
+  private
+
+  def pharmacy_params
+    params.require(:pharmacy).permit(:name, :address, :phone_number, :opening_hours, :user_id)
+  end
 end
