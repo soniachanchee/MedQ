@@ -26,4 +26,10 @@ class PagesController < ApplicationController
       # @order = Order.where("user_id = #{current_user} AND pharmacy_id =")
     end
   end
+
+  def view_profile
+    @user = current_user
+    @pharmacy = Pharmacy.new
+    @chatroom = Chatroom.where(name: Pharmacy.where(user_id: current_user.id).name)
+  end
 end

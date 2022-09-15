@@ -21,4 +21,6 @@ Rails.application.routes.draw do
   resources :orders, only: [:update, :show]
 
   get 'checkout', to: "pages#checkout", as: :checkout
+
+  get 'profile', to: "pages#view_profile", as: :profile
 end

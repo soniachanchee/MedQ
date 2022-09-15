@@ -4,7 +4,7 @@
     <div class="container-fluid">
       <h2 id="pharma-count"><%= "#{@stocks.count} Pharmacies found" %></h2>
       <% @medicines.each do |medicine| %>
-        <%# <div class="card search-card"> %>
+        <div class="desc-card">
           <h3><%= medicine.name %></h3>
           <p>Rs <%= number_with_delimiter(medicine.price, :delimiter => ',') %></p>
           <% if medicine.prescription == true %>
@@ -12,7 +12,7 @@
           <% else %>
             <p><%= "No prescription needed" %></p>
           <% end %>
-        <%# </div> %>
+        </div>
       <% end %>
     </div>
       <hr>
