@@ -66,26 +66,15 @@
 
 
     <div class="d-grid gap-2 mt-3 btn-checkout">
-      <button class="btn btn-success">View order</button>
+      <%= link_to 'View order', order_path(@orders[-1]), class: "btn btn-success" %>
     </div>
 
-    <div class="d-grid gap-2 mt-4 btn-checkout">
-      <button class="btn btn-success">Pay</button>
-    </div>
+    <%# <div class="d-grid gap-2 mt-4 btn-checkout"> %>
+      <%# <button class="btn btn-success">Pay</button> %>
+    <%# </div> %>
 
   </div>
   <div class="container mt-5" style="height: 10vh;"></div>
-
-
-  <% total_price = 0 %>
-  <% @orders.each do |order| %>
-    <%= order.medicine.name %>
-    <%= order.quantity %>
-    <%= order.medicine.price * order.quantity %>
-    <% total_price += order.medicine.price * order.quantity %>
-  <% end %>
-  <%= total_price %>
-  <br>
 <% else %>
 <h4>No current order</h4>
 <% end %>
