@@ -1,0 +1,17 @@
+<%= @user.email %>
+
+<%= simple_form_for(@pharmacy) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :address %>
+  <%= f.input :phone_number %>
+  <%= f.input :opening_hours %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.submit %>
+<% end %>
+
+
+<%= link_to chatroom_path(@chatroom) %>
+
+
+<%# <% @chats.each do |chat| %> %>
+<%# <%= @chatroom %> %>

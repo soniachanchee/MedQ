@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
-  resources :chatrooms, only: :show do
+  resources :chatrooms, only: [:show, :index] do
     resources :messages, only: :create
   end
 
@@ -21,4 +21,6 @@ Rails.application.routes.draw do
   resources :orders, only: [:update, :show]
 
   get 'checkout', to: "pages#checkout", as: :checkout
+
+  get 'profile', to: "pages#view_profile", as: :profile
 end

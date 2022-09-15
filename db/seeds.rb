@@ -4,7 +4,6 @@
 
 require "open-uri"
 
-
 Stock.destroy_all
 
 Medicine.destroy_all
@@ -21,25 +20,44 @@ User.destroy_all
 
 Pharmacy.destroy_all
 
+# users
+
+user1 = User.new(email: "a@live.com", password: "123456", admin: true)
+user1.save
+
+user2 = User.new(email: "b@live.com", password: "123456", admin: true)
+user2.save
+
+user3 = User.new(email: "c@live.com", password: "123456", admin: true)
+user3.save
+
+user4 = User.new(email: "d@live.com", password: "123456", admin: true)
+user4.save
+
+user5 = User.new(email: "e@live.com", password: "123456", admin: true)
+user5.save
+
+user6 = User.new(email: "f@live.com", password: "123456", admin: true)
+user6.save
 
 # pharmacy
-pharmacy1 = Pharmacy.new(name: "Forme", address: "Bagatelle, Mauritius")
+pharmacy1 = Pharmacy.new(name: "Forme", address: "Bagatelle, Mauritius", user_id: user1.id)
 pharmacy1.save
 
-pharmacy2 = Pharmacy.new(name: "MedActiv pharmacy", address: "Ebene, Mauritius")
+pharmacy2 = Pharmacy.new(name: "MedActiv pharmacy", address: "Ebene, Mauritius", user_id: user2.id)
 
 pharmacy2.save
 
-pharmacy3 = Pharmacy.new(name: "MedActiv pharmacy", address: "Port Louis, Mauritius")
+pharmacy3 = Pharmacy.new(name: "MedActiv pharmacy", address: "Port Louis, Mauritius", user_id: user3.id)
 pharmacy3.save
 
-pharmacy4 = Pharmacy.new(name: "MedActiv pharmacy", address: "Cascavelle mall, Cascavelle, Mauritius")
+pharmacy4 = Pharmacy.new(name: "MedActiv pharmacy", address: "Cascavelle mall, Cascavelle, Mauritius", user_id: user4.id)
 pharmacy4.save
 
-pharmacy5 = Pharmacy.new(name: "MedActiv pharmacy", address: "Trianon, Mauritius")
+pharmacy5 = Pharmacy.new(name: "MedActiv pharmacy", address: "Trianon, Mauritius", user_id: user5.id)
 pharmacy5.save
 
-pharmacy6 = Pharmacy.new(name: "MedActiv pharmacy", address: "Phoenix Mall, Vacoas-Phoenix, Mauritius")
+pharmacy6 = Pharmacy.new(name: "MedActiv pharmacy", address: "Phoenix Mall, Vacoas-Phoenix, Mauritius", user_id: user6.id)
 pharmacy6.save
 # medicine
 file = URI.open("https://res.cloudinary.com/dfrukqags/image/upload/v1662544227/MEDECINE/mustela_sunscreen_giuhlc.jpg")
@@ -151,9 +169,3 @@ stock1_pharma2.save
 
 stock2_pharma2 = Stock.new(pharmacy_id: pharmacy2.id, medicine_id: medicine10.id, quantity: 3)
 stock2_pharma2.save
-
-chatroom1 = Chatroom.new(name: "naz")
-chatroom1.save
-
-chatroom2 = Chatroom.new(name: "sonia")
-chatroom2.save
