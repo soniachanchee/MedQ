@@ -16,17 +16,17 @@
         <% if user_signed_in? %>
           <li class="nav-item">
             <%= link_to checkout_path, class: "nav-link" do %>
-              <i class="fas fa-shopping-cart"></i>
+              <i class="fas fa-shopping-cart fa-2x"></i>
             <% end %>
 
           </li>
           <li class="nav-item">
             <%= link_to "#", class: "nav-link" do %>
-              <i class="fas fa-comment"></i>
+              <i class="fas fa-comment fa-2x"></i>
             <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to icon('fa-solid', 'user'), destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link" %>
+            <%= link_to icon('fa-solid fa-2x', 'user'), destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link" %>
           </li>
           <%# <li class="nav-item dropup"> %>
             <%# <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
