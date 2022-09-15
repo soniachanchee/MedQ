@@ -1,3 +1,9 @@
+<div>
+  <%= link_to checkout_path do %>
+    <i class="fa-solid fa-arrow-left back"></i>
+  <% end %>
+</div>
+
 <h4>Preview</h4>
 <h6><%= @orders.last.pharmacy.name %></h6>
 <% total_price = 0 %>
@@ -7,6 +13,7 @@
   <%= order.medicine.price * order.quantity %>
   <% total_price += order.medicine.price * order.quantity %>
   <br>
+  <hr>
 <% end %>
 <p>Total: Rs <%= total_price %></p>
 <% if @orders.last.delivery == true %>

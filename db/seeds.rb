@@ -127,6 +127,25 @@ stock2_pharma1.save
 stock3_pharma1 = Stock.new(pharmacy_id: pharmacy1.id, medicine_id: medicine10.id, quantity: 9)
 stock3_pharma1.save
 
+stock4_pharma1 = Stock.new(pharmacy_id: pharmacy1.id, medicine_id: medicine1.id, quantity: 9)
+stock4_pharma1.save
+
+stock5_pharma1 = Stock.new(pharmacy_id: pharmacy1.id, medicine_id: medicine3.id, quantity: 9)
+stock5_pharma1.save
+
+stock6_pharma1 = Stock.new(pharmacy_id: pharmacy1.id, medicine_id: medicine4.id, quantity: 9)
+stock6_pharma1.save
+
+stock7_pharma1 = Stock.new(pharmacy_id: pharmacy1.id, medicine_id: medicine5.id, quantity: 9)
+stock7_pharma1.save
+
+stock8_pharma1 = Stock.new(pharmacy_id: pharmacy1.id, medicine_id: medicine8.id, quantity: 9)
+stock8_pharma1.save
+
+stock9_pharma1 = Stock.new(pharmacy_id: pharmacy1.id, medicine_id: medicine7.id, quantity: 9)
+stock9_pharma1.save
+
+
 stock1_pharma2 = Stock.new(pharmacy_id: pharmacy2.id, medicine_id: medicine2.id, quantity: 2)
 stock1_pharma2.save
 
