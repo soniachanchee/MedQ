@@ -33,6 +33,8 @@
     .med-card-img {
       width: 50%;
       height: auto;
+      padding: 15px;
+      border-radius: 20px;
     }
 
     .med-card-price {
@@ -40,6 +42,11 @@
       border-radius: 0.5em;
       color: white;
       background-color: #5B9363;
+      width: 180px;
     }
   }
+}
+
+.line-height-4 {
+  line-height: 4;
 }
