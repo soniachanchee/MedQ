@@ -6,7 +6,7 @@
 
 <div class="order-box mt-4">
   <div class="order-content">
-    <h4 class="mt-3"><%= @orders.last.pharmacy.name %></h4>
+    <h4><%= @orders.last.pharmacy.name %></h4>
     <h6>Address: <%= @orders.last.pharmacy.address %></h6>
   </div>
 </div>
@@ -49,6 +49,7 @@
 <div class="d-grid gap-2 mt-4 btn-checkout">
   <button class="btn btn-success" onclick="payment()">Pay</button>
 </div>
+<div class="container mt-5" style="height: 10vh;"></div>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
 function payment(){

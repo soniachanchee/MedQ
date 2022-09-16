@@ -3,10 +3,12 @@
     <i class="fa-solid fa-arrow-left back"></i>
   <% end %>
 </div>
-
-<h1><%= @pharmacy.name %></h1>
-<p><%= "Address: #{@pharmacy.address}" %></p>
-
+<div class="order-box mb-4">
+  <div class="order-content">
+    <h4><%= @pharmacy.name %></h4>
+    <p><%= "Address: #{@pharmacy.address}" %></p>
+  </div>
+</div>
 
 <div class="med-cards">
   <div class="card med-card">
