@@ -47,5 +47,37 @@
   </table>
 </div>
 <div class="d-grid gap-2 mt-4 btn-checkout">
-  <button class="btn btn-success">Pay</button>
+  <button class="btn btn-success" onclick="payment()">Pay</button>
 </div>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+function payment(){
+  let timerInterval
+  Swal.fire({
+    title: 'Processing payment',
+    html: 'Please wait a moment.',
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: () => {
+      Swal.showLoading()
+      const b = Swal.getHtmlContainer().querySelector('b')
+      timerInterval = setInterval(() => {
+        b.textContent = Swal.getTimerLeft()
+      }, 100)
+    },
+    willClose: () => {
+      clearInterval(timerInterval)
+    }
+  }).then((result) => {
+    /* Read more about handling dismissals below */
+    if (result.dismiss === Swal.DismissReason.timer) {
+      Swal.fire({
+        title: 'Payment done!',
+        html: 'Your order has been confirmed.',
+        icon: 'success',
+        confirmButtonColor: '#5b9363'
+      })
+    }
+  })
+}
+</script>
