@@ -69,6 +69,7 @@ class OrdersController < ApplicationController
       @medicine_stock[0].quantity = test
       # raise
       # @order.medicine.stock.quantity -= @order.quantity
+      flash[:alert] = "Added to cart"
       redirect_to pharmacy_path(@pharmacy)
     else
       puts "f"
