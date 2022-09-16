@@ -3,7 +3,7 @@ class PrescriptionsController < ApplicationController
     @prescription = Prescription.new(prescription_params)
     @prescription.user = current_user
     @prescription.save
-    # raise
+    flash.alert = "Uploaded"
     redirect_to checkout_path
   end
 
