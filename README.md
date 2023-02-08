@@ -10,3 +10,10 @@ MedQ is a web app designed for mobiles devices to search for local pharmacies an
 ![image](https://user-images.githubusercontent.com/87809334/217652273-bb4952a7-c74f-4c77-b31c-d9fde36890c9.png)
 ![image](https://user-images.githubusercontent.com/87809334/217654072-f74e8ab7-c426-4d5f-8ccb-19f5708682e1.png)
 
+2. Search
+
+
+![image](https://user-images.githubusercontent.com/87809334/217656394-edaa9800-59a8-4c39-8672-8a5a1ede0713.png)
+![image](https://user-images.githubusercontent.com/87809334/217656533-1f93a409-e949-4b8e-90f3-1375c40e1642.png)
+
+
